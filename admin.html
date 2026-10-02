@@ -704,8 +704,8 @@
         "availabilityAr": "متاح للمشاريع المتقدمة والفرص الوظيفية",
         "experienceYears": "2+ Years in Automation & Systems",
         "profileImage": "profile.jpg",
-        "cvUrl": "Ahmed_Hamed_Elshrabasy_CV.pdf",
-        "cvFileName": "Ahmed_Hamed_Elshrabasy_CV.pdf"
+        "cvUrl": "Resume_Yassine_Eljarjini.pdf",
+        "cvFileName": "Resume_Yassine_Eljarjini.pdf"
       },
       "contact": {
         "email": "Ahmed.edu.pt12@gmail.com",
@@ -1522,7 +1522,7 @@
             </label>
             <div>
               <div class="form-group" style="margin-bottom:0.5rem;">
-                <input type="text" id="dp_cvUrl" value="${p.cvUrl || 'Ahmed_Hamed_Elshrabasy_CV.pdf'}" class="form-input" oninput="if (!data.personal) data.personal = {}; data.personal.cvUrl=this.value; updateCvStatusPreview();" placeholder="رابط الملف المباشر، Google Drive، أو ارفع ملف PDF...">
+                <input type="text" id="dp_cvUrl" value="${p.cvUrl || 'Resume_Yassine_Eljarjini.pdf'}" class="form-input" oninput="if (!data.personal) data.personal = {}; data.personal.cvUrl=this.value; updateCvStatusPreview();" placeholder="رابط الملف المباشر، Google Drive، أو ارفع ملف PDF...">
               </div>
               <div id="cvStatusBadge" style="font-size:0.82rem; margin-bottom:0.75rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.5rem; min-height:22px;"></div>
               <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
@@ -2099,7 +2099,7 @@
 
     function previewCurrentCv() {
       const p = (data && data.personal) ? data.personal : {};
-      const url = p.cvUrl || 'Ahmed_Hamed_Elshrabasy_CV.pdf';
+      const url = p.cvUrl || 'Resume_Yassine_Eljarjini.pdf';
       if (url.startsWith('data:application/pdf') || url.startsWith('data:;base64')) {
         try {
           const arr = url.split(',');
@@ -2122,7 +2122,7 @@
     }
 
     function restoreDefaultCv() {
-      const def = 'Ahmed_Hamed_Elshrabasy_CV.pdf';
+      const def = 'Resume_Yassine_Eljarjini.pdf';
       const input = document.getElementById('dp_cvUrl');
       if (input) input.value = def;
       if (!data.personal) data.personal = {};
@@ -2144,8 +2144,8 @@
       if (!badge) return;
       const p = (data && data.personal) ? data.personal : {};
       const url = p.cvUrl || '';
-      if (!url || url === 'Ahmed_Hamed_Elshrabasy_CV.pdf') {
-        badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#94a3b8;"></span> <span style="color:var(--text-secondary);">' + (adminLang === 'ar' ? 'الملف الافتراضي المرفق (Ahmed_Hamed_Elshrabasy_CV.pdf)' : 'Default attached file (Ahmed_Hamed_Elshrabasy_CV.pdf)') + '</span>';
+      if (!url || url === 'Resume_Yassine_Eljarjini.pdf') {
+        badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#94a3b8;"></span> <span style="color:var(--text-secondary);">' + (adminLang === 'ar' ? 'الملف الافتراضي المرفق (Resume_Yassine_Eljarjini.pdf)' : 'Default attached file (Resume_Yassine_Eljarjini.pdf)') + '</span>';
       } else if (url.startsWith('data:application/pdf') || url.startsWith('data:;base64')) {
         const sizeKb = Math.round((url.length * 3) / 4 / 1024);
         badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span> <span style="color:#10b981; font-weight:600;">' + (adminLang === 'ar' ? ('ملف PDF مدمج ومرفوع مباشرة (' + (p.cvFileName || 'ملف السيرة الذاتية') + ' ~ ' + sizeKb + ' KB)') : ('Direct embedded PDF (' + (p.cvFileName || 'Custom CV') + ' ~ ' + sizeKb + ' KB)')) + '</span>';
