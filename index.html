@@ -1503,7 +1503,7 @@
 
       <div class="nav-actions">
         <!-- Top bar Official CV PDF download -->
-        <a href="Ahmed_Hamed_Elshrabasy_CV.pdf" download="Ahmed_Hamed_Elshrabasy_CV.pdf" onclick="downloadOfficialCv(event)" class="btn btn-glass btn-sm" id="topCvDownloadBtn" title="Download Official CV (PDF)">
+        <a href="Resume_Yassine_Eljarjini.pdf" download="Resume_Yassine_Eljarjini.pdf" onclick="downloadOfficialCv(event)" class="btn btn-glass btn-sm" id="topCvDownloadBtn" title="Download Official CV (PDF)">
           <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
           <span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
           <span class="cv-text-short" style="display:none;">CV</span>
@@ -1896,8 +1896,8 @@
     "availabilityAr": "متاح للمشاريع المتقدمة والفرص الوظيفية",
     "experienceYears": "2+ Years in Automation & Systems",
     "profileImage": "profile.jpg",
-    "cvUrl": "Ahmed_Hamed_Elshrabasy_CV.pdf",
-    "cvFileName": "Ahmed_Hamed_Elshrabasy_CV.pdf"
+    "cvUrl": "Resume_Yassine_Eljarjini.pdf",
+    "cvFileName": "Resume_Yassine_Eljarjini.pdf"
   },
   "contact": {
     "email": "Ahmed.edu.pt12@gmail.com",
@@ -2730,7 +2730,7 @@
         document.getElementById('contactLocationText').textContent = isAr && p.currentLocationAr ? p.currentLocationAr : p.currentLocation;
       }
 
-      const cvTarget = (p && p.cvUrl) ? p.cvUrl : 'Ahmed_Hamed_Elshrabasy_CV.pdf';
+      const cvTarget = (p && p.cvUrl) ? p.cvUrl : 'Resume_Yassine_Eljarjini.pdf';
       const topCv = document.getElementById('topCvDownloadBtn');
       if (topCv) {
         topCv.href = cvTarget;
@@ -3125,7 +3125,7 @@
       const p = (data && data.personal) ? data.personal : {};
       const fallbackName = (p.fullName ? p.fullName.trim().replace(/\s+/g, '_') : 'Candidate') + '_CV.pdf';
       const fileName = p.cvFileName || fallbackName;
-      const fileUrl = (p && p.cvUrl) ? p.cvUrl : 'Ahmed_Hamed_Elshrabasy_CV.pdf';
+      const fileUrl = (p && p.cvUrl) ? p.cvUrl : 'Resume_Yassine_Eljarjini.pdf';
 
       // 1. Direct external web links (e.g. Google Drive, OneDrive, external URL)
       if (/^https?:\/\//i.test(fileUrl)) {
