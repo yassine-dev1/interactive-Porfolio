@@ -16,20 +16,17 @@ const PORTFOLIO_CONFIG = {
   // Leave empty ("") for 100% Zero-Cloud / Offline mode (uses localStorage & JSON backup).
   // Or enter your own Firebase project credentials to enable cloud sync:
   firebase: {
-    projectId: "ahmed-elshrabasy-portfolio",
-    apiKey: "AIzaSyB3SiK2EHgiSBTAQsFGmz8cwghSxHnpQzw"
+    projectId: "interactiveportfolio-4788f",
+    apiKey: "AIzaSyD94vBHqzO8hgkPlsQTjLSJSzKKCnc4VqU"
   }
 };
 
-/**
- * Resolves the Firestore Cloud URL dynamically from PORTFOLIO_CONFIG or LocalStorage
- */
 function getPortfolioCloudUrl() {
   // 1. Check if configured in PORTFOLIO_CONFIG
   if (PORTFOLIO_CONFIG.firebase && PORTFOLIO_CONFIG.firebase.projectId && PORTFOLIO_CONFIG.firebase.apiKey) {
     return `https://firestore.googleapis.com/v1/projects/${PORTFOLIO_CONFIG.firebase.projectId}/databases/(default)/documents/portfolio_data/main?key=${PORTFOLIO_CONFIG.firebase.apiKey}`;
   }
-
+ 
   // 2. Check if user configured custom credentials inside Admin UI (localStorage)
   try {
     const saved = localStorage.getItem('portfolio_firebase_config');
@@ -40,10 +37,10 @@ function getPortfolioCloudUrl() {
       }
     }
   } catch (e) {}
-
+ 
   return null;
 }
-
+ 
 /**
  * Returns the effective admin PIN (from custom local PIN if set, or config)
  */
