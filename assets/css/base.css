@@ -170,5 +170,6 @@
     :where(a, button, input, textarea, select):focus-visible {
       outline: 3px solid var(--border-focus);
       outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 5px var(--border-focus);
     }
 

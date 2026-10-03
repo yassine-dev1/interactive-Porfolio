@@ -697,3 +697,53 @@
       }
     }
 
+    /* Keep the desktop floating badges clear of the statistics row. */
+    @media (min-width: 1200px) {
+      .hero-visual-wrap {
+        margin-bottom: 5rem;
+      }
+
+      html[dir="ltr"] .badge-pos-1,
+      html[dir="ltr"] .badge-pos-3,
+      html[dir="rtl"] .badge-pos-1,
+      html[dir="rtl"] .badge-pos-3 {
+        bottom: -70px;
+      }
+    }
+
+    /* Give the compact mobile header enough room at the narrowest supported width. */
+    @media (max-width: 360px) {
+      .ambient-blob-2 {
+        display: none;
+      }
+
+      .nav-container {
+        gap: 0;
+      }
+
+      .nav-container > nav {
+        display: none;
+      }
+
+      .brand-logo {
+        margin-right: 0;
+      }
+
+      .nav-actions {
+        flex: 1 1 auto;
+        min-width: 0;
+        justify-content: flex-end;
+        gap: 0.15rem;
+      }
+
+      #langToggleBtn {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+      }
+
+      #langToggleBtn #langBtnText {
+        display: none;
+      }
+    }
+

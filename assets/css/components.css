@@ -449,7 +449,15 @@
     }
     @media (max-width: 900px) {
       .contact-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-method-card > * {
+        min-width: 0;
+      }
+
+      .contact-method-card .fact-value {
+        overflow-wrap: anywhere;
       }
     }
     .contact-method-card {
@@ -700,6 +708,13 @@
     .form-textarea:focus {
       border-color: var(--border-focus);
       box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .form-input:focus-visible,
+    .form-textarea:focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 5px var(--border-focus);
     }
 
     .cv-menu {
