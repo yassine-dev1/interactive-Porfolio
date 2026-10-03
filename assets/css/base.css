@@ -4,40 +4,41 @@
        DESIGN TOKENS & ROBUST AESTHETICS
        ========================================================================== */
     :root {
-      --bg-base: #060913;
-      --bg-surface: #0c1222;
-      --bg-surface-elevated: #131d36;
-      --bg-glass: rgba(12, 18, 34, 0.85);
-      --bg-glass-card: rgba(19, 29, 54, 0.7);
+      --bg-base: #0b111b;
+      --bg-surface: #111a28;
+      --bg-surface-elevated: #172335;
+      --bg-glass: rgba(11, 17, 27, 0.92);
+      --bg-glass-card: rgba(23, 35, 53, 0.92);
       
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-card: rgba(255, 255, 255, 0.12);
-      --border-focus: rgba(99, 102, 241, 0.6);
+      --border-focus: #60a5fa;
 
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --text-tertiary: #64748b;
 
-      --primary: #6366f1;
-      --primary-light: #818cf8;
-      --primary-glow: rgba(99, 102, 241, 0.35);
-      --accent-cyan: #06b6d4;
-      --accent-emerald: #10b981;
-      --gradient-accent: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%);
+      --primary: #3b82f6;
+      --primary-light: #93c5fd;
+      --primary-glow: rgba(59, 130, 246, 0.24);
+      --accent-cyan: #22c1d6;
+      --accent-emerald: #34d399;
+      --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #22c1d6 100%);
 
       --font-display: 'Outfit', sans-serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
       --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 16px;
+      --radius-card: 16px;
       --radius-full: 9999px;
 
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.18);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.24);
+      --shadow-lg: 0 20px 44px rgba(0, 0, 0, 0.34);
 
       --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
       --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,30 +46,30 @@
     }
 
     html.light {
-      --bg-base: #f8fafc;
+      --bg-base: #f4f7fb;
       --bg-surface: #ffffff;
-      --bg-surface-elevated: #f1f5f9;
-      --bg-glass: rgba(255, 255, 255, 0.88);
-      --bg-glass-card: rgba(255, 255, 255, 0.8);
+      --bg-surface-elevated: #edf2f7;
+      --bg-glass: rgba(244, 247, 251, 0.94);
+      --bg-glass-card: rgba(255, 255, 255, 0.96);
       
       --border-subtle: rgba(0, 0, 0, 0.08);
       --border-card: rgba(0, 0, 0, 0.1);
-      --border-focus: rgba(99, 102, 241, 0.7);
+      --border-focus: #2563eb;
 
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-tertiary: #64748b;
+      --text-primary: #102033;
+      --text-secondary: #405268;
+      --text-tertiary: #53677d;
 
-      --primary: #4f46e5;
-      --primary-light: #6366f1;
-      --primary-glow: rgba(79, 70, 229, 0.2);
-      --accent-cyan: #0891b2;
+      --primary: #2563eb;
+      --primary-light: #1d4ed8;
+      --primary-glow: rgba(37, 99, 235, 0.18);
+      --accent-cyan: #087f93;
       --accent-emerald: #059669;
-      --gradient-accent: linear-gradient(135deg, #4f46e5 0%, #0891b2 50%, #059669 100%);
+      --gradient-accent: linear-gradient(135deg, #2563eb 0%, #087f93 100%);
 
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+      --shadow-sm: 0 2px 8px rgba(16, 32, 51, 0.06);
+      --shadow-md: 0 12px 28px rgba(16, 32, 51, 0.1);
+      --shadow-lg: 0 20px 44px rgba(16, 32, 51, 0.14);
     }
 
     *, *::before, *::after {
@@ -115,8 +116,8 @@
       width: 60vw;
       height: 60vw;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
-      filter: blur(80px);
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0) 70%);
+      filter: blur(96px);
     }
     .ambient-blob-2 {
       position: absolute;
@@ -125,8 +126,8 @@
       width: 50vw;
       height: 50vw;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0) 70%);
-      filter: blur(90px);
+      background: radial-gradient(circle, rgba(34, 193, 214, 0.07) 0%, rgba(34, 193, 214, 0) 70%);
+      filter: blur(104px);
     }
     .bg-grid-pattern {
       position: fixed;
@@ -134,13 +135,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
       background-size: 32px 32px;
       pointer-events: none;
       z-index: 0;
     }
     html.light .bg-grid-pattern {
-      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(16, 32, 51, 0.045) 1px, transparent 1px);
     }
 
     .container {
@@ -164,5 +165,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
+    }
+
+    :where(a, button, input, textarea, select):focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 3px;
     }
 

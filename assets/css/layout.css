@@ -609,3 +609,91 @@
       }
     }
 
+    /* Step 2 visual system: calmer rhythm and contained desktop hero. */
+    .site-header {
+      box-shadow: 0 1px 0 var(--border-subtle), 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand-logo {
+      flex-shrink: 0;
+      margin-right: 0.75rem;
+    }
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .page-section {
+      padding: 4.25rem 0;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-eyebrow {
+      color: var(--accent-cyan);
+      background: color-mix(in srgb, var(--accent-cyan) 10%, transparent);
+      border-color: color-mix(in srgb, var(--accent-cyan) 28%, transparent);
+    }
+
+    .hero-section {
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-grid {
+      gap: 3rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      letter-spacing: 0;
+    }
+
+    .hero-headline {
+      color: var(--primary-light);
+    }
+
+    @media (min-width: 1200px) {
+      #heroFloatingBadgesContainer {
+        width: 100%;
+        max-width: 100%;
+        left: 0;
+        transform: none;
+      }
+
+      .floating-badge {
+        max-width: 190px;
+        white-space: normal;
+        padding: 0.6rem 0.75rem;
+      }
+
+      html[dir="ltr"] .badge-pos-0 { left: 0; right: auto; }
+      html[dir="ltr"] .badge-pos-1 { left: auto; right: 0; }
+      html[dir="ltr"] .badge-pos-2 { left: auto; right: 0; }
+      html[dir="ltr"] .badge-pos-3 { left: 0; right: auto; }
+      html[dir="ltr"] .badge-pos-4 { left: auto; right: 0; }
+      html[dir="ltr"] .badge-pos-5 { left: 0; right: auto; }
+
+      html[dir="rtl"] .badge-pos-0 { left: auto; right: 0; }
+      html[dir="rtl"] .badge-pos-1 { left: 0; right: auto; }
+      html[dir="rtl"] .badge-pos-2 { left: 0; right: auto; }
+      html[dir="rtl"] .badge-pos-3 { left: auto; right: 0; }
+      html[dir="rtl"] .badge-pos-4 { left: 0; right: auto; }
+      html[dir="rtl"] .badge-pos-5 { left: auto; right: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .page-section {
+        padding: 3.5rem 0;
+      }
+
+      .hero-section {
+        padding-top: 3rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+
