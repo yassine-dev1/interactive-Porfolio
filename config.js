@@ -10,7 +10,7 @@
 const PORTFOLIO_CONFIG = {
   // Secret PIN to access the admin studio (admin.html)
   // Default is "1234". Change this to your preferred PIN.
-  adminPin: "1234",
+  adminPin: "yassineGit",
 
   // Cloud Synchronization Settings (Firebase Firestore REST API)
   // Leave empty ("") for 100% Zero-Cloud / Offline mode (uses localStorage & JSON backup).
@@ -26,7 +26,7 @@ function getPortfolioCloudUrl() {
   if (PORTFOLIO_CONFIG.firebase && PORTFOLIO_CONFIG.firebase.projectId && PORTFOLIO_CONFIG.firebase.apiKey) {
     return `https://firestore.googleapis.com/v1/projects/${PORTFOLIO_CONFIG.firebase.projectId}/databases/(default)/documents/portfolio_data/main?key=${PORTFOLIO_CONFIG.firebase.apiKey}`;
   }
- 
+
   // 2. Check if user configured custom credentials inside Admin UI (localStorage)
   try {
     const saved = localStorage.getItem('portfolio_firebase_config');
@@ -37,10 +37,10 @@ function getPortfolioCloudUrl() {
       }
     }
   } catch (e) {}
- 
+
   return null;
 }
- 
+
 /**
  * Returns the effective admin PIN (from custom local PIN if set, or config)
  */

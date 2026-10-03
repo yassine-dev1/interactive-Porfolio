@@ -1468,6 +1468,23 @@
       }
       h1, h2, h3, h4, p, span { color: #000 !important; }
     }
+  
+    /* CV dropdown, clickable certifications */
+    .cv-dropdown{position:relative;display:inline-flex}
+    .cv-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:190px;background:var(--bg-surface-elevated);border:1px solid var(--border-card);border-radius:var(--radius-md);padding:.35rem;box-shadow:0 12px 32px rgba(0,0,0,.45);display:none;z-index:200}
+    .cv-menu.open{display:block}
+    .cv-menu a{display:flex;align-items:center;gap:.6rem;padding:.55rem .75rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:.9rem;font-weight:600}
+    .cv-menu a:hover{background:rgba(99,102,241,.15)}
+    .cv-menu .cv-lang{font-size:.7rem;color:var(--text-tertiary);margin-left:auto}
+    a.cert-card{text-decoration:none;color:inherit;cursor:pointer;transition:transform .2s,border-color .2s}
+    a.cert-card:hover{border-color:var(--primary-light);transform:translateY(-2px)}
+    .cert-dl{margin-left:auto;width:18px;height:18px;color:var(--primary-light);flex-shrink:0}
+  
+    /* Layout tweaks: longer brand name, 6 skill cards */
+    .brand-logo span, #navBrandName { white-space: nowrap; font-size: 1.05rem; }
+    .nav-link { white-space: nowrap; }
+    .nav-links { gap: 1.25rem; }
+    @media (min-width: 1100px) { .skills-categories-grid { grid-template-columns: repeat(3, 1fr); } }
   </style>
 </head>
 <body>
@@ -1501,11 +1518,18 @@
 
       <div class="nav-actions">
         <!-- Top bar Official CV PDF download -->
-        <a href="Resume_Yassine_Eljarjini.pdf" download="Resume_Yassine_Eljarjini.pdf" onclick="downloadOfficialCv(event)" class="btn btn-glass btn-sm" id="topCvDownloadBtn" title="Download Official CV (PDF)">
-          <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
-          <span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
-          <span class="cv-text-short" style="display:none;">CV</span>
-        </a>
+        <div class="cv-dropdown" id="cvDropdown">
+<button type="button" class="btn btn-glass btn-sm" id="topCvDownloadBtn" onclick="toggleCvMenu(event)" aria-haspopup="true" aria-expanded="false" title="CV (PDF)">
+<i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+<span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
+<span class="cv-text-short" style="display:none;">CV</span>
+<i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+</button>
+<div class="cv-menu" id="cvMenu" role="menu">
+<a role="menuitem" id="cvLinkFr" href="Resume_Yassine_Eljarjini.pdf" download onclick="downloadOfficialCv(event,'fr')"><i data-lucide="file-down" style="width:16px;height:16px;"></i> Français <span class="cv-lang">PDF</span></a>
+<a role="menuitem" id="cvLinkEn" href="Resume_Yassine_Eljarjini_EN.pdf" download onclick="downloadOfficialCv(event,'en')"><i data-lucide="file-down" style="width:16px;height:16px;"></i> English <span class="cv-lang">PDF</span></a>
+</div>
+</div>
 
         <!-- Language toggle -->
         <button id="langToggleBtn" class="btn btn-glass btn-sm" onclick="toggleLanguage()" title="Switch Language">
@@ -1745,12 +1769,10 @@
             <p style="color: var(--text-secondary); margin-bottom: 2rem;" data-i18n="contact_channel_desc">Feel free to connect via WhatsApp, email, or schedule a technical call.</p>
 
             <a href="https://www.linkedin.com/in/el-jarjini-yassine/" target="_blank" rel="noopener noreferrer" class="contact-method-card">
-              <div class="contact-icon-box" style="color:#25d366; background:rgba(37,211,102,0.1);">
-                <i data-lucide="linkedin"></i>
-              </div>
+              <div class="contact-icon-box" style="color:#0A66C2; background:rgba(10,102,194,0.15);"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
               <div>
                 <div class="fact-label" data-i18n="contact_whatsapp_label">WhatsApp & Phone</div>
-                <div class="fact-value" id="contactPhoneText">+20 100 619 3690</div>
+                <div class="fact-value" id="contactPhoneText">linkedin.com/in/el-jarjini-yassine</div>
               </div>
             </a>
 
@@ -1850,7 +1872,9 @@
     "availabilityFr": "Disponible pour un stage PFE · À partir de janvier 2027",
     "profileImage": "profile.jpg",
     "cvUrl": "Resume_Yassine_Eljarjini.pdf",
-    "cvFileName": "Resume_Yassine_Eljarjini.pdf"
+    "cvFileName": "Resume_Yassine_Eljarjini.pdf",
+    "cvUrlEn": "Resume_Yassine_Eljarjini_EN.pdf",
+    "cvFileNameEn": "Resume_Yassine_Eljarjini_EN.pdf"
   },
   "contact": {
     "email": "eljarjiniyassine1@gmail.com",
@@ -1939,8 +1963,8 @@
       "icon": "graduation-cap",
       "label": "Education",
       "labelFr": "Formation",
-      "value": "FST Mohammedia – Engineering Cycle (ILISI)",
-      "valueFr": "FST Mohammedia – Cycle Ingénieur (ILISI)"
+      "value": "FST Mohammedia – Engineering Cycle (GLSID)",
+      "valueFr": "FST Mohammedia – Cycle Ingénieur (GLSID)"
     },
     {
       "id": "ps3",
@@ -2028,6 +2052,35 @@
       ]
     },
     {
+      "categoryName": "Artificial Intelligence",
+      "categoryNameFr": "Intelligence Artificielle",
+      "icon": "bot",
+      "skills": [
+        {
+          "name": "LLM",
+          "desc": "Conversational assistant built on an LLM (ShopApp); text generation with the Gemini API.",
+          "descFr": "Assistant conversationnel basé sur un LLM (ShopApp) ; génération de texte avec l'API Gemini."
+        },
+        {
+          "name": "RAG",
+          "desc": "Retrieval-Augmented Generation over a product catalog to ground answers.",
+          "descFr": "Retrieval-Augmented Generation sur un catalogue produit pour des réponses fiables."
+        },
+        {
+          "name": "AI Agents",
+          "badge": "Beginner",
+          "badgeFr": "Initié",
+          "desc": "Scrimba « Learn AI Agents » course (August 2026).",
+          "descFr": "Cours Scrimba « Learn AI Agents » (août 2026)."
+        },
+        {
+          "name": "n8n",
+          "badge": "Beginner",
+          "badgeFr": "Initié"
+        }
+      ]
+    },
+    {
       "categoryName": "Databases & Data",
       "categoryNameFr": "Bases de données & Data",
       "icon": "database",
@@ -2071,6 +2124,29 @@
         },
         {
           "name": "Jira"
+        }
+      ]
+    },
+    {
+      "categoryName": "Soft Skills",
+      "categoryNameFr": "Soft Skills",
+      "icon": "brain",
+      "skills": [
+        {
+          "name": "AI-assisted development (vibe coding)",
+          "nameFr": "Développement assisté par IA (vibe coding)"
+        },
+        {
+          "name": "Analytical problem solving",
+          "nameFr": "Résolution analytique de problèmes"
+        },
+        {
+          "name": "Rapid tech learning",
+          "nameFr": "Apprentissage rapide des technologies"
+        },
+        {
+          "name": "Time management & prioritization",
+          "nameFr": "Gestion du temps et priorisation"
         }
       ]
     }
@@ -2270,19 +2346,22 @@
       "name": "Learn Next.js",
       "platform": "Scrimba",
       "completionDate": "August 2026",
-      "completionDateFr": "Août 2026"
+      "completionDateFr": "Août 2026",
+      "fileUrl": "certifications/Scrimba_Learn_Next_js.pdf"
     },
     {
       "name": "Learn AI Agents",
       "platform": "Scrimba",
       "completionDate": "August 2026",
-      "completionDateFr": "Août 2026"
+      "completionDateFr": "Août 2026",
+      "fileUrl": "certifications/Scrimba_Learn_AI_Agents.pdf"
     },
     {
       "name": "CCNA: Introduction to Networks",
       "platform": "Cisco Networking Academy · Hassan II Mohammedia University",
       "completionDate": "January 2025",
-      "completionDateFr": "Janvier 2025"
+      "completionDateFr": "Janvier 2025",
+      "fileUrl": "certifications/Cisco_CCNA_Introduction_to_Networks.pdf"
     }
   ],
   "addedValue": {}
@@ -2526,12 +2605,9 @@
         document.getElementById('contactLocationText').textContent = isFr && p.currentLocationFr ? p.currentLocationFr : p.currentLocation;
       }
 
-      const cvTarget = (p && p.cvUrl) ? p.cvUrl : 'Resume_Yassine_Eljarjini.pdf';
-      const topCv = document.getElementById('topCvDownloadBtn');
-      if (topCv) {
-        topCv.href = cvTarget;
-        topCv.download = p.cvFileName || ((p.fullName ? p.fullName.trim().replace(/\s+/g, '_') : 'Candidate') + '_CV.pdf');
-      }
+      const lf = document.getElementById('cvLinkFr'), le = document.getElementById('cvLinkEn');
+      if (lf && p.cvUrl && !/^data:/.test(p.cvUrl)) lf.href = p.cvUrl;
+      if (le && p.cvUrlEn && !/^data:/.test(p.cvUrlEn)) le.href = p.cvUrlEn;
 
       // About
       document.getElementById('aboutMeP1').textContent = isFr && p.aboutMeFr ? p.aboutMeFr : p.aboutMe;
@@ -2664,11 +2740,11 @@
           skillsHtml += `
             <div class="skill-item">
               <div class="skill-item-header">
-                <span class="skill-name">${sk.name} ${sk.badge ? `<span class="skill-badge">${sk.badge}</span>` : ''}</span>
+                <span class="skill-name">${isFr && sk.nameFr ? sk.nameFr : sk.name} ${sk.badge ? `<span class="skill-badge">${isFr && sk.badgeFr ? sk.badgeFr : sk.badge}</span>` : ''}</span>
                 ${sk.level ? `<span class="skill-level">${sk.level}%</span>` : ''}
               </div>
               ${sk.level ? `<div class="skill-progress-bar"><div class="skill-progress-fill" style="width: ${sk.level}%;"></div></div>` : ''}
-              ${sk.desc ? `<p class="skill-desc">${sk.desc}</p>` : ''}
+              ${sk.desc ? `<p class="skill-desc">${isFr && sk.descFr ? sk.descFr : sk.desc}</p>` : ''}
             </div>
           `;
         });
@@ -2818,14 +2894,16 @@
       `;
 
       (data.courses || []).forEach(c => {
-        const item = document.createElement('div');
+        const item = document.createElement(c.fileUrl ? 'a' : 'div');
         item.className = 'cert-card';
+        if (c.fileUrl) { item.href = c.fileUrl; item.setAttribute('download', c.fileUrl.split('/').pop()); item.title = isFr ? 'Télécharger le certificat (PDF)' : 'Download certificate (PDF)'; }
         item.innerHTML = `
           <div class="cert-icon"><i data-lucide="award"></i></div>
           <div>
             <h4 style="font-size: 1rem; font-weight: 700;">${c.name}</h4>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">${c.platform} • ${c.completionDate}</p>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">${c.platform} • ${isFr && c.completionDateFr ? c.completionDateFr : c.completionDate}</p>
           </div>
+${c.fileUrl ? '<i data-lucide="download" class="cert-dl"></i>' : ''}
         `;
         certsList.appendChild(item);
       });
@@ -2858,12 +2936,14 @@
       e.target.reset();
     }
 
-    async function downloadOfficialCv(e) {
+    async function downloadOfficialCv(e, which) {
       if (e) e.preventDefault();
+      closeCvMenu();
+      const isEn = which === 'en';
       const p = (data && data.personal) ? data.personal : {};
       const fallbackName = (p.fullName ? p.fullName.trim().replace(/\s+/g, '_') : 'Candidate') + '_CV.pdf';
-      const fileName = p.cvFileName || fallbackName;
-      const fileUrl = (p && p.cvUrl) ? p.cvUrl : 'Resume_Yassine_Eljarjini.pdf';
+      const fileName = isEn ? (p.cvFileNameEn || 'Resume_Yassine_Eljarjini_EN.pdf') : (p.cvFileName || fallbackName);
+      const fileUrl = isEn ? (p.cvUrlEn || 'Resume_Yassine_Eljarjini_EN.pdf') : ((p && p.cvUrl) ? p.cvUrl : 'Resume_Yassine_Eljarjini.pdf');
 
       // 1. Direct external web links (e.g. Google Drive, OneDrive, external URL)
       if (/^https?:\/\//i.test(fileUrl)) {
@@ -2929,6 +3009,18 @@
         document.body.removeChild(fallbackLink);
       }
     }
+
+    function closeCvMenu() {
+      const m = document.getElementById('cvMenu'); if (m) m.classList.remove('open');
+      const b = document.getElementById('topCvDownloadBtn'); if (b) b.setAttribute('aria-expanded', 'false');
+    }
+    function toggleCvMenu(e) {
+      e.stopPropagation();
+      const o = document.getElementById('cvMenu').classList.toggle('open');
+      document.getElementById('topCvDownloadBtn').setAttribute('aria-expanded', String(o));
+    }
+    document.addEventListener('click', e => { if (!e.target.closest('#cvDropdown')) closeCvMenu(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCvMenu(); });
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
