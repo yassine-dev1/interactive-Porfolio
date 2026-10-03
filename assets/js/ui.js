@@ -1,8 +1,76 @@
 /* Theme, navigation, CV and contact interactions. */
 
+let scrollMotionObserver = null;
+let motionPreferenceQuery = null;
+let motionPreferenceListenerAttached = false;
+
+function initializeMotion() {
+      if (scrollMotionObserver) scrollMotionObserver.disconnect();
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      motionPreferenceQuery = motionPreferenceQuery || reduceMotion;
+      if (!motionPreferenceListenerAttached) {
+        const handleMotionPreferenceChange = () => initializeMotion();
+        if (motionPreferenceQuery.addEventListener) {
+          motionPreferenceQuery.addEventListener('change', handleMotionPreferenceChange);
+        } else if (motionPreferenceQuery.addListener) {
+          motionPreferenceQuery.addListener(handleMotionPreferenceChange);
+        }
+        motionPreferenceListenerAttached = true;
+      }
+      document.documentElement.classList.toggle('motion-reduced', reduceMotion.matches);
+
+      const revealTargets = document.querySelectorAll(
+        '.hero-content, .hero-visual-wrap, .section-title-wrap, .about-grid, .skills-categories-grid, .projects-grid, .timeline, .edu-cert-grid, .contact-grid'
+      );
+      const staggerTargets = document.querySelectorAll(
+        '.skills-categories-grid > *, .projects-grid > *, .certifications-list > *'
+      );
+      const targets = [...revealTargets, ...staggerTargets];
+
+      targets.forEach(element => {
+        element.classList.remove('is-visible');
+        element.classList.add('motion-reveal');
+      });
+      document.querySelectorAll('.skills-categories-grid, .projects-grid, .certifications-list').forEach(grid => {
+        [...grid.children].forEach((element, index) => {
+          element.style.setProperty('--motion-delay', `${Math.min(index, 6) * 70}ms`);
+        });
+      });
+
+      if (reduceMotion.matches) {
+        targets.forEach(element => {
+          element.classList.add('is-visible');
+          element.style.removeProperty('--motion-delay');
+        });
+        return;
+      }
+
+      scrollMotionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          scrollMotionObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+      targets.forEach(element => scrollMotionObserver.observe(element));
+}
+
+function startThemeTransition() {
+      document.documentElement.classList.add('is-theme-switching');
+      window.setTimeout(() => document.documentElement.classList.remove('is-theme-switching'), 260);
+}
+
+function startLanguageTransition() {
+      document.body.classList.add('is-language-switching');
+      window.setTimeout(() => document.body.classList.remove('is-language-switching'), 220);
+}
+
 function toggleTheme() {
       const html = document.documentElement;
       const isDark = html.classList.contains('dark');
+      startThemeTransition();
       if (isDark) {
         html.classList.remove('dark');
         html.classList.add('light');
@@ -36,6 +104,7 @@ function toggleTheme() {
               data = parsed;
               localStorage.setItem('portfolio_cache', JSON.stringify(data));
               renderAll();
+            initializeMotion();
             }
           }
         }

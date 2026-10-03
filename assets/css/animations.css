@@ -11,3 +11,68 @@
       50% { transform: translateY(-7px); }
     }
 
+/* Scroll reveals are opt-in from JavaScript so content remains visible without JS. */
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+main {
+  transition: opacity 180ms ease;
+}
+
+body.is-language-switching main {
+  opacity: 0.72;
+}
+
+html.is-theme-switching body,
+html.is-theme-switching .site-header,
+html.is-theme-switching .page-section,
+html.is-theme-switching .key-facts-card,
+html.is-theme-switching .skill-card,
+html.is-theme-switching .project-card-body,
+html.is-theme-switching .timeline-card,
+html.is-theme-switching .cert-card,
+html.is-theme-switching .contact-method-card {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+html.motion-reduced,
+html.motion-reduced body {
+  scroll-behavior: auto;
+}
+
+html.motion-reduced .motion-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+

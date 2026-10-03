@@ -118,14 +118,17 @@ const I18N = {
     function init() {
       applyLanguage(currentLang);
       renderAll();
+      initializeMotion();
       fetchLatestFromCloud();
     }
 
     function toggleLanguage() {
+      startLanguageTransition();
       currentLang = currentLang === 'en' ? 'fr' : 'en';
       localStorage.setItem('portfolio_lang', currentLang);
       applyLanguage(currentLang);
       renderAll();
+      initializeMotion();
     }
 
     function applyLanguage(lang) {
