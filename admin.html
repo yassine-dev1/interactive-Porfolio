@@ -690,10 +690,10 @@
     "professionalTitleFr": "Ingénieur Logiciel Full-Stack",
     "professionalHeadline": "Web & Mobile Apps · Microservices · LLM/RAG integration",
     "professionalHeadlineFr": "Applications Web & Mobile · Microservices · Intégration LLM/RAG",
-    "shortIntroduction": "Final-year software engineering student at FST Mohammedia, I build full-stack web and mobile applications, service-oriented architectures and LLM-powered features. Curious about AI agents and workflow automation with n8n, I am developing these skills alongside my full-stack profile.",
-    "shortIntroductionFr": "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.",
-    "aboutMe": "Final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia, specializing in Full-Stack development. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development. Curious about AI agents and workflow automation with n8n, I am building these skills (Scrimba 'Learn AI Agents' course) to bring intelligent features into real-world applications.",
-    "aboutMeFr": "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia, je me spécialise en développement Full-Stack. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile. Curieux des agents IA et de l'automatisation de workflows avec n8n, je me forme à ces domaines (cours Scrimba « Learn AI Agents ») afin d'intégrer des fonctionnalités intelligentes dans des applications concrètes.",
+    "shortIntroduction": "Final-year software engineering student at FST Mohammedia, building full-stack web and mobile applications, service-oriented architectures and LLM-powered features.",
+    "shortIntroductionFr": "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM.",
+    "aboutMe": "I am a final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development.",
+    "aboutMeFr": "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile.",
     "careerObjective": "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents. Available from January 2027.",
     "careerObjectiveFr": "À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA. Disponible à partir de janvier 2027.",
     "currentLocation": "Casablanca, Morocco",
@@ -701,9 +701,9 @@
     "availability": "Open to a PFE internship · From January 2027",
     "availabilityFr": "Disponible pour un stage PFE · À partir de janvier 2027",
     "profileImage": "profile.jpg",
-    "cvUrl": "Resume_Yassine_Eljarjini.pdf",
-    "cvFileName": "Resume_Yassine_Eljarjini.pdf",
-    "cvUrlEn": "Resume_Yassine_Eljarjini_EN.pdf",
+    "cvUrl": "resumes/Resume_Yassine_Eljarjini_FR.pdf",
+    "cvFileName": "Resume_Yassine_Eljarjini_FR.pdf",
+    "cvUrlEn": "resumes/Resume_Yassine_Eljarjini_EN.pdf",
     "cvFileNameEn": "Resume_Yassine_Eljarjini_EN.pdf"
   },
   "contact": {
@@ -1425,7 +1425,7 @@
             </label>
             <div>
               <div class="form-group" style="margin-bottom:0.5rem;">
-                <input type="text" id="dp_cvUrl" value="${p.cvUrl || 'Resume_Yassine_Eljarjini.pdf'}" class="form-input" oninput="if (!data.personal) data.personal = {}; data.personal.cvUrl=this.value; updateCvStatusPreview();" placeholder="رابط الملف المباشر، Google Drive، أو ارفع ملف PDF...">
+                <input type="text" id="dp_cvUrl" value="${p.cvUrl || 'resumes/Resume_Yassine_Eljarjini_FR.pdf'}" class="form-input" oninput="if (!data.personal) data.personal = {}; data.personal.cvUrl=this.value; updateCvStatusPreview();" placeholder="رابط الملف المباشر، Google Drive، أو ارفع ملف PDF...">
               </div>
               <div id="cvStatusBadge" style="font-size:0.82rem; margin-bottom:0.75rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.5rem; min-height:22px;"></div>
               <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
@@ -2002,7 +2002,7 @@
 
     function previewCurrentCv() {
       const p = (data && data.personal) ? data.personal : {};
-      const url = p.cvUrl || 'Resume_Yassine_Eljarjini.pdf';
+      const url = p.cvUrl || 'resumes/Resume_Yassine_Eljarjini_FR.pdf';
       if (url.startsWith('data:application/pdf') || url.startsWith('data:;base64')) {
         try {
           const arr = url.split(',');
@@ -2025,7 +2025,7 @@
     }
 
     function restoreDefaultCv() {
-      const def = 'Resume_Yassine_Eljarjini.pdf';
+      const def = 'resumes/Resume_Yassine_Eljarjini_FR.pdf';
       const input = document.getElementById('dp_cvUrl');
       if (input) input.value = def;
       if (!data.personal) data.personal = {};
@@ -2047,8 +2047,8 @@
       if (!badge) return;
       const p = (data && data.personal) ? data.personal : {};
       const url = p.cvUrl || '';
-      if (!url || url === 'Resume_Yassine_Eljarjini.pdf') {
-        badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#94a3b8;"></span> <span style="color:var(--text-secondary);">' + (adminLang === 'fr' ? 'الملف الافتراضي المرفق (Resume_Yassine_Eljarjini.pdf)' : 'Default attached file (Resume_Yassine_Eljarjini.pdf)') + '</span>';
+      if (!url || url === 'resumes/Resume_Yassine_Eljarjini_FR.pdf') {
+        badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#94a3b8;"></span> <span style="color:var(--text-secondary);">' + (adminLang === 'fr' ? 'الملف الافتراضي المرفق (resumes/Resume_Yassine_Eljarjini_FR.pdf)' : 'Default attached file (resumes/Resume_Yassine_Eljarjini_FR.pdf)') + '</span>';
       } else if (url.startsWith('data:application/pdf') || url.startsWith('data:;base64')) {
         const sizeKb = Math.round((url.length * 3) / 4 / 1024);
         badge.innerHTML = '<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span> <span style="color:#10b981; font-weight:600;">' + (adminLang === 'fr' ? ('ملف PDF مدمج ومرفوع مباشرة (' + (p.cvFileName || 'ملف السيرة الذاتية') + ' ~ ' + sizeKb + ' KB)') : ('Direct embedded PDF (' + (p.cvFileName || 'Custom CV') + ' ~ ' + sizeKb + ' KB)')) + '</span>';
