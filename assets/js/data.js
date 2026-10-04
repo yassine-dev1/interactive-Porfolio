@@ -204,6 +204,12 @@ const INITIAL_DATA = {
         {
           name: "Tailwind CSS",
         },
+        {
+          name: "REST API",
+        },
+        {
+          name: "Microservices",
+        },
       ],
     },
     {
@@ -281,6 +287,26 @@ const INITIAL_DATA = {
         },
         {
           name: "Jira",
+        },
+      ],
+    },
+    {
+      categoryName: "Methods & Best Practices",
+      categoryNameFr: "Méthodes & Bonnes pratiques",
+      icon: "workflow",
+      skills: [
+        {
+          name: "SOLID Principles",
+          nameFr: "Principes SOLID",
+        },
+        {
+          name: "Clean Architecture",
+        },
+        {
+          name: "Design Patterns",
+        },
+        {
+          name: "Agile / Scrum",
         },
       ],
     },
