@@ -186,40 +186,74 @@ function renderKeyFactsSummary() {
   });
 }
 
-// Categorized Skills (4 categories with descriptions)
+// Categorized skills
 function renderCategorizedSkills() {
   const container = document.getElementById("skillsContainer");
   container.innerHTML = "";
   const cats = data.skillsCategories || [];
   const isFr = currentLang === "fr";
 
-  cats.forEach((cat) => {
-    const card = document.createElement("div");
+  cats.forEach((cat, categoryIndex) => {
+    const categoryName =
+      isFr && cat.categoryNameFr ? cat.categoryNameFr : cat.categoryName;
+    const card = document.createElement("article");
     card.className = "skill-card";
+    if (cat.categoryName === "Soft Skills") {
+      card.classList.add("skill-card--wide");
+    }
 
-    let skillsHtml = "";
-    (cat.skills || []).forEach((sk) => {
-      skillsHtml += `
-            <div class="skill-item">
-              <div class="skill-item-header">
-                <span class="skill-name">${isFr && sk.nameFr ? sk.nameFr : sk.name} ${sk.badge ? `<span class="skill-badge">${isFr && sk.badgeFr ? sk.badgeFr : sk.badge}</span>` : ""}</span>
-                ${sk.level ? `<span class="skill-level">${sk.level}%</span>` : ""}
-              </div>
-              ${sk.level ? `<div class="skill-progress-bar"><div class="skill-progress-fill" style="width: ${sk.level}%;"></div></div>` : ""}
-              ${sk.desc ? `<p class="skill-desc">${isFr && sk.descFr ? sk.descFr : sk.desc}</p>` : ""}
-            </div>
-          `;
+    const header = document.createElement("header");
+    header.className = "skill-card-header";
+
+    const categoryDot = document.createElement("span");
+    categoryDot.className = "skill-category-dot";
+    categoryDot.setAttribute("aria-hidden", "true");
+
+    const icon = document.createElement("i");
+    icon.dataset.lucide = cat.icon || "workflow";
+    icon.className = "skill-card-icon";
+
+    const title = document.createElement("h3");
+    title.textContent = categoryName;
+    header.append(categoryDot, icon, title);
+
+    const list = document.createElement("ul");
+    list.className = "skill-chips";
+    list.setAttribute("aria-label", categoryName);
+
+    (cat.skills || []).forEach((sk, skillIndex) => {
+      const label = isFr && sk.nameFr ? sk.nameFr : sk.name;
+      const description = isFr && sk.descFr ? sk.descFr : sk.desc;
+      const badge = isFr && sk.badgeFr ? sk.badgeFr : sk.badge;
+      const chip = document.createElement("li");
+      chip.className = "skill-chip";
+      chip.style.setProperty("--chip-index", skillIndex);
+      chip.title = description || "";
+
+      const name = document.createElement("span");
+      name.className = "skill-chip-name";
+      name.textContent = label;
+      chip.appendChild(name);
+
+      if (badge) {
+        const badgeTag = document.createElement("span");
+        badgeTag.className = "skill-badge";
+        badgeTag.textContent = badge;
+        chip.appendChild(badgeTag);
+      }
+
+      if (description) {
+        const accessibleDescription = document.createElement("span");
+        accessibleDescription.className = "u-visually-hidden skill-chip-description";
+        accessibleDescription.textContent = description;
+        chip.appendChild(accessibleDescription);
+      }
+
+      list.appendChild(chip);
     });
 
-    card.innerHTML = `
-          <div class="skill-card-header">
-            <i data-lucide="${cat.icon || "workflow"}" class="u-render-6"></i>
-            <h3>${isFr && cat.categoryNameFr ? cat.categoryNameFr : cat.categoryName}</h3>
-          </div>
-          <div class="skill-card-body">
-            ${skillsHtml}
-          </div>
-        `;
+    card.append(header, list);
+    card.style.setProperty("--card-index", categoryIndex);
     container.appendChild(card);
   });
 }

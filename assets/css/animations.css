@@ -93,4 +93,8 @@ html.motion-reduced .motion-reveal {
     opacity: 1;
     transform: none;
   }
+
+  .skill-card:hover {
+    transform: none;
+  }
 }
