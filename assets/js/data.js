@@ -26,6 +26,8 @@ const INITIAL_DATA = {
     availability: "Open to a PFE internship · From January 2027",
     availabilityFr: "Disponible pour un stage PFE · À partir de janvier 2027",
     profileImage: "profile.jpg",
+    aboutHeadline: "Learning fast, building end to end",
+    aboutHeadlineFr: "Apprendre vite, construire de bout en bout",
     cvUrl: "resumes/Resume_Yassine_Eljarjini_FR.pdf",
     cvFileName: "Resume_Yassine_Eljarjini_FR.pdf",
     cvUrlEn: "resumes/Resume_Yassine_Eljarjini_EN.pdf",
@@ -49,7 +51,7 @@ const INITIAL_DATA = {
     },
     {
       id: "s2",
-      number: "6",
+      number: "4",
       label: "Featured projects",
       labelFr: "Projets phares",
     },
@@ -390,27 +392,27 @@ const INITIAL_DATA = {
       overviewFr:
         "Plateforme e-commerce ASP.NET Core (.NET 8) avec cache haute performance et panier distribué sur Redis, ainsi qu'un assistant conversationnel utilisant le RAG pour des réponses fiables basées sur le catalogue produit.",
     },
-    {
-      id: "friend-locator",
-      name: "Friend Locator",
-      nameFr: "Friend Locator",
-      category: "Mobile · Full-Stack",
-      categoryFr: "Mobile · Full-Stack",
-      shortDescription:
-        "Mobile app for sharing location in real time between friends.",
-      shortDescriptionFr:
-        "Application mobile de partage de position en temps réel entre amis.",
-      technologies: ["React Native", "NestJS", "PostgreSQL"],
-      liveDemo: "",
-      githubUrl: "https://github.com/yassine-dev1/FreindLocator",
-      imageUrl: "",
-      metric: "Real-time location sharing",
-      metricFr: "Partage de position en temps réel",
-      overview:
-        "Mobile application built with React Native, a NestJS API and a PostgreSQL database, letting friends share their position in real time.",
-      overviewFr:
-        "Application mobile construite avec React Native, une API NestJS et une base PostgreSQL, permettant à des amis de partager leur position en temps réel.",
-    },
+    // {
+    //   id: "friend-locator",
+    //   name: "Friend Locator",
+    //   nameFr: "Friend Locator",
+    //   category: "Mobile · Full-Stack",
+    //   categoryFr: "Mobile · Full-Stack",
+    //   shortDescription:
+    //     "Mobile app for sharing location in real time between friends.",
+    //   shortDescriptionFr:
+    //     "Application mobile de partage de position en temps réel entre amis.",
+    //   technologies: ["React Native", "NestJS", "PostgreSQL"],
+    //   liveDemo: "",
+    //   githubUrl: "https://github.com/yassine-dev1/FreindLocator",
+    //   imageUrl: "",
+    //   metric: "Real-time location sharing",
+    //   metricFr: "Partage de position en temps réel",
+    //   overview:
+    //     "Mobile application built with React Native, a NestJS API and a PostgreSQL database, letting friends share their position in real time.",
+    //   overviewFr:
+    //     "Application mobile construite avec React Native, une API NestJS et une base PostgreSQL, permettant à des amis de partager leur position en temps réel.",
+    // },
     {
       id: "pathfinding",
       name: "Pathfinding Visualizer Engine",
@@ -432,55 +434,7 @@ const INITIAL_DATA = {
       overviewFr:
         "Moteur de calcul de chemins haute performance en C++ compilé en WebAssembly pour une exécution quasi-native dans le navigateur, avec implémentation et benchmarking des algorithmes A*, Dijkstra et BFS sur des grilles de 800 nœuds.",
     },
-    {
-      id: "service-manager",
-      name: "ServiceManager – Intervention Management",
-      nameFr: "ServiceManager – Gestion des interventions",
-      category: "Web · Internship project",
-      categoryFr: "Web · Projet de stage",
-      shortDescription:
-        "Web app built for Safarelec to digitize the management of internal interventions.",
-      shortDescriptionFr:
-        "Application web conçue pour Safarelec afin de digitaliser la gestion des interventions internes.",
-      technologies: ["React.js", "Express.js"],
-      liveDemo: "",
-      githubUrl: "https://github.com/yassine-dev1/ServiceManager",
-      imageUrl: "",
-      metric: "Real client · Safarelec",
-      metricFr: "Cas client réel · Safarelec",
-      overview:
-        "Web application designed for Safarelec (El Jadida) to digitize the internal intervention process and improve the follow-up of import/export flows.",
-      overviewFr:
-        "Application web conçue pour Safarelec (El Jadida) afin de digitaliser le processus de gestion des interventions internes et d'optimiser le suivi des flux import/export.",
-    },
-    {
-      id: "storeshop",
-      name: "StoreShop – Spring Boot E-Commerce",
-      nameFr: "StoreShop – E-Commerce Spring Boot",
-      category: "Backend · Java",
-      categoryFr: "Backend · Java",
-      shortDescription:
-        "E-commerce web application built with Spring Boot, Spring Security and MySQL.",
-      shortDescriptionFr:
-        "Application e-commerce web construite avec Spring Boot, Spring Security et MySQL.",
-      technologies: [
-        "Spring Boot 3",
-        "Java 17",
-        "MySQL",
-        "Thymeleaf",
-        "Spring Security",
-      ],
-      liveDemo: "",
-      githubUrl: "https://github.com/yassine-dev1/StoreShop",
-      imageUrl: "assets/images/projects/storeshop.webp",
-      metric: "Java / Spring ecosystem",
-      metricFr: "Écosystème Java / Spring",
-      overview:
-        "E-commerce application developed with Spring Boot 3 and Java 17, using Thymeleaf templates, Spring Security and a MySQL database.",
-      overviewFr:
-        "Application e-commerce développée avec Spring Boot 3 et Java 17, utilisant des templates Thymeleaf, Spring Security et une base MySQL.",
-    },
-    {
+        {
       id: "academic-orientation",
       name: "Academic Orientation Expert System",
       nameFr: "Système Expert d'Orientation Académique",
@@ -507,6 +461,54 @@ const INITIAL_DATA = {
       overviewFr:
         "Application desktop Python/CustomTkinter combinant un moteur d'inférence à chaînage avant et le modèle de personnalité RIASEC pour calculer la compatibilité avec les domaines, et utilisant l'API Gemini pour générer des lettres de motivation.",
     },
+        {
+      id: "storeshop",
+      name: "StoreShop – Spring Boot E-Commerce",
+      nameFr: "StoreShop – E-Commerce Spring Boot",
+      category: "Backend · Java",
+      categoryFr: "Backend · Java",
+      shortDescription:
+        "E-commerce web application built with Spring Boot, Spring Security and MySQL.",
+      shortDescriptionFr:
+        "Application e-commerce web construite avec Spring Boot, Spring Security et MySQL.",
+      technologies: [
+        "Spring Boot 3",
+        "Java 17",
+        "MySQL",
+        "Thymeleaf",
+        "Spring Security",
+      ],
+      liveDemo: "",
+      githubUrl: "https://github.com/yassine-dev1/StoreShop",
+      imageUrl: "assets/images/projects/storeshop.webp",
+      metric: "Java / Spring ecosystem",
+      metricFr: "Écosystème Java / Spring",
+      overview:
+        "E-commerce application developed with Spring Boot 3 and Java 17, using Thymeleaf templates, Spring Security and a MySQL database.",
+      overviewFr:
+        "Application e-commerce développée avec Spring Boot 3 et Java 17, utilisant des templates Thymeleaf, Spring Security et une base MySQL.",
+    },
+    // {
+    //   id: "service-manager",
+    //   name: "ServiceManager – Intervention Management",
+    //   nameFr: "ServiceManager – Gestion des interventions",
+    //   category: "Web · Internship project",
+    //   categoryFr: "Web · Projet de stage",
+    //   shortDescription:
+    //     "Web app built for Safarelec to digitize the management of internal interventions.",
+    //   shortDescriptionFr:
+    //     "Application web conçue pour Safarelec afin de digitaliser la gestion des interventions internes.",
+    //   technologies: ["React.js", "Express.js"],
+    //   liveDemo: "",
+    //   githubUrl: "https://github.com/yassine-dev1/ServiceManager",
+    //   imageUrl: "",
+    //   metric: "Real client · Safarelec",
+    //   metricFr: "Cas client réel · Safarelec",
+    //   overview:
+    //     "Web application designed for Safarelec (El Jadida) to digitize the internal intervention process and improve the follow-up of import/export flows.",
+    //   overviewFr:
+    //     "Application web conçue pour Safarelec (El Jadida) afin de digitaliser le processus de gestion des interventions internes et d'optimiser le suivi des flux import/export.",
+    // },
   ],
   education: [
     {

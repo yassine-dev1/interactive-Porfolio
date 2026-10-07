@@ -84,6 +84,8 @@ function renderAll() {
   if (le && p.cvUrlEn && !/^data:/.test(p.cvUrlEn)) le.href = p.cvUrlEn;
 
   // About
+  document.getElementById("aboutHeadlineText").textContent =
+    isFr && p.aboutHeadlineFr ? p.aboutHeadlineFr : p.aboutHeadline || "";
   document.getElementById("aboutMeP1").textContent =
     isFr && p.aboutMeFr ? p.aboutMeFr : p.aboutMe;
   document.getElementById("careerObjectiveText").textContent =
