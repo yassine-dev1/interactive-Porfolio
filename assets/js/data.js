@@ -33,8 +33,8 @@ const INITIAL_DATA = {
   },
   contact: {
     email: "eljarjiniyassine1@gmail.com",
-    phone: "",
-    phoneDisplay: "linkedin.com/in/el-jarjini-yassine",
+    phone: "+212644847468",
+    phoneDisplay: "+212 6 44 84 74 68",
     whatsappUrl: "https://www.linkedin.com/in/el-jarjini-yassine/",
     linkedin: "https://www.linkedin.com/in/el-jarjini-yassine/",
     github: "https://github.com/yassine-dev1",

@@ -1022,6 +1022,22 @@ a.cert-card:hover {
   color: var(--accent-cyan);
   background: rgba(6, 182, 212, 0.1);
 }
+.contact-icon-box--phone {
+  gap: 0.35rem;
+  color: var(--primary);
+  background: var(--primary-glow);
+}
+.country-flag {
+  width: 22px;
+  height: 15px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border-card);
+  border-radius: 2px;
+}
+.contact-phone-icon {
+  width: 17px;
+  height: 17px;
+}
 .contact-form-heading {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;

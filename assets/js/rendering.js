@@ -40,12 +40,15 @@ function renderAll() {
   if (c.linkedin)
     document.getElementById("heroSocialLinkedin").href = c.linkedin;
   if (c.github) document.getElementById("heroSocialGithub").href = c.github;
-  if (c.whatsappUrl) {
-    const _w = document.getElementById("heroSocialWhatsapp");
-    if (_w) _w.href = c.whatsappUrl;
-    document.getElementById(
-      "contactPhoneText",
-    ).parentElement.parentElement.href = c.whatsappUrl;
+  if (c.linkedin) {
+    const linkedinCard = document.getElementById("contactLinkedinCard");
+    if (linkedinCard) linkedinCard.href = c.linkedin;
+    const linkedinText = document.getElementById("contactLinkedinText");
+    if (linkedinText) {
+      linkedinText.textContent = c.linkedin
+        .replace(/^https?:\/\/(www\.)?/, "")
+        .replace(/\/$/, "");
+    }
   }
   if (c.email) {
     document.getElementById("heroSocialEmail").href = "mailto:" + c.email;
@@ -57,7 +60,13 @@ function renderAll() {
   if (c.phoneDisplay || c.phone) {
     document.getElementById("contactPhoneText").textContent =
       c.phoneDisplay || c.phone;
+    const phoneCard = document.getElementById("contactPhoneCard");
+    if (phoneCard && c.phone) {
+      phoneCard.href = `tel:${c.phone.replace(/\s+/g, "")}`;
+    }
   }
+  const flag = document.getElementById("contactMoroccoFlag");
+  if (flag) flag.setAttribute("aria-label", isFr ? "Maroc" : "Morocco");
   if (p.currentLocation) {
     document.getElementById("contactLocationText").textContent =
       isFr && p.currentLocationFr ? p.currentLocationFr : p.currentLocation;
