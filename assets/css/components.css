@@ -323,9 +323,9 @@ html[dir="rtl"] .skill-badge {
   overflow: hidden;
 }
 .project-header-banner.has-custom-image {
-  height: 170px;
-  background-size: cover;
-  background-position: center;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  background: none;
 }
 .project-header-banner.has-custom-image::after {
   content: "";
@@ -358,6 +358,13 @@ html[dir="rtl"] .skill-badge {
   height: 48px;
   color: var(--text-on-primary);
   opacity: 0.85;
+}
+.project-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
 .project-card-body {
   padding: 1.75rem;
@@ -1115,7 +1122,7 @@ a.cert-card:hover {
   padding: 0.35rem 0.75rem;
   font-size: 0.85rem;
 }
-.u-render-11 {
+.project-modal-image-wrap {
   width: 100%;
   max-height: 280px;
   height: 220px;
@@ -1126,10 +1133,12 @@ a.cert-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   position: relative;
 }
-.u-render-12 {
+.project-modal-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
+  background: var(--bg-base);
 }
 .u-render-13 {
   font-size: 1.75rem;

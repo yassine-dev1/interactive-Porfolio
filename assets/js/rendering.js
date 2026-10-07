@@ -379,9 +379,11 @@ function renderProjects() {
       tagsHtml += `<span class="project-tag">${t}</span>`;
     });
 
+    const projectName = isFr && p.nameFr ? p.nameFr : p.name;
     const bannerMarkup = p.imageUrl
       ? `
-          <div class="project-header-banner has-custom-image" style="background-image: url('${p.imageUrl}');">
+          <div class="project-header-banner has-custom-image">
+            <img class="project-card-image" src="${p.imageUrl}" alt="${projectName}" width="1200" height="600" loading="lazy" decoding="async">
             <span class="project-img-pill"><i data-lucide="image" class="project-preview-icon"></i> ${isFr ? "Aperçu" : "Preview"}</span>
           </div>
         `
@@ -395,7 +397,7 @@ function renderProjects() {
           ${bannerMarkup}
           <div class="project-card-body">
             <div class="project-category">${isFr && p.categoryFr ? p.categoryFr : p.category}</div>
-            <h3 class="project-title">${isFr && p.nameFr ? p.nameFr : p.name}</h3>
+            <h3 class="project-title">${projectName}</h3>
             <p class="project-desc">${isFr && p.shortDescriptionFr ? p.shortDescriptionFr : p.shortDescription}</p>
             <div class="project-tags">${tagsHtml}</div>
             <div class="project-footer">
@@ -420,8 +422,8 @@ function openProjectModal(p) {
 
   const modalImageMarkup = p.imageUrl
     ? `
-        <div class="u-render-11">
-          <img src="${p.imageUrl}" alt="${p.name}" class="u-render-12">
+        <div class="project-modal-image-wrap">
+          <img src="${p.imageUrl}" alt="${isFr && p.nameFr ? p.nameFr : p.name}" class="project-modal-image" width="1200" height="600" loading="lazy" decoding="async">
         </div>
       `
     : "";

@@ -382,7 +382,7 @@ const INITIAL_DATA = {
       technologies: [".NET 8", "SQL Server", "Redis", "LLM", "RAG"],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/ShopApp",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/ecommerce-ai.webp",
       metric: "Distributed cart · RAG assistant",
       metricFr: "Panier distribué · Assistant RAG",
       overview:
@@ -424,7 +424,7 @@ const INITIAL_DATA = {
       technologies: ["C++", "WebAssembly", "React", "Dijkstra", "A*", "BFS"],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/PathFinding",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/pathfinding.webp",
       metric: "A*, Dijkstra, BFS on 800-node grids",
       metricFr: "A*, Dijkstra, BFS sur grilles de 800 nœuds",
       overview:
@@ -472,7 +472,7 @@ const INITIAL_DATA = {
       ],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/StoreShop",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/storeshop.webp",
       metric: "Java / Spring ecosystem",
       metricFr: "Écosystème Java / Spring",
       overview:
@@ -499,7 +499,7 @@ const INITIAL_DATA = {
       ],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/academic_orientation",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/academic-orientation.webp",
       metric: "Forward chaining + RIASEC",
       metricFr: "Chaînage avant + RIASEC",
       overview:
