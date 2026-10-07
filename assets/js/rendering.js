@@ -1,5 +1,8 @@
 /* Data-driven rendering for the public portfolio. */
 
+let heroTextAnimationPlayed = false;
+let heroTextAnimationTimer = null;
+
 function renderAll() {
   const isFr = currentLang === "fr";
   const p = data.personal || {};
@@ -35,6 +38,9 @@ function renderAll() {
     isFr && p.currentLocationFr
       ? p.currentLocationFr
       : p.currentLocation || "Casablanca, Maroc";
+
+  renderHeroTextAnimation({ initial: !heroTextAnimationPlayed });
+  heroTextAnimationPlayed = true;
 
   // Contact Links
   if (c.linkedin)
@@ -105,6 +111,95 @@ function renderAll() {
   renderEducation();
 
   lucide.createIcons();
+}
+
+function splitHeroWords(element, text, startIndex, delayStep) {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  element.textContent = "";
+  element.removeAttribute("aria-hidden");
+
+  words.forEach((word, index) => {
+    const span = document.createElement("span");
+    span.className = "hero-word";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = word;
+    span.style.setProperty(
+      "--hero-word-delay",
+      `${(startIndex + index) * delayStep}ms`,
+    );
+    element.appendChild(span);
+    if (index < words.length - 1) element.appendChild(document.createTextNode(" "));
+  });
+
+  return words.length;
+}
+
+function renderHeroTextAnimation({ initial = false, short = false } = {}) {
+  const greeting = document.getElementById("heroGreetingText");
+  const name = document.getElementById("heroFullName");
+  const headline = document.getElementById("heroHeadline");
+  const intro = document.getElementById("heroIntro");
+  const title = document.querySelector(".hero-title");
+  const content = document.querySelector(".hero-content");
+  if (!greeting || !name || !headline || !intro || !title || !content) return;
+
+  if (heroTextAnimationTimer) window.clearTimeout(heroTextAnimationTimer);
+
+  const greetingText = greeting.textContent.trim();
+  const nameText = name.textContent.trim();
+  const headlineText = headline.textContent.trim();
+  const introText = intro.textContent.trim();
+  const totalWords = [greetingText, nameText, headlineText, introText]
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const delayStep = short
+    ? Math.min(32, 900 / Math.max(totalWords, 1))
+    : Math.min(60, 2600 / Math.max(totalWords, 1));
+  const transitionDuration = short ? 260 : 350;
+  content.style.setProperty("--hero-word-duration", `${transitionDuration}ms`);
+  let wordIndex = 0;
+
+  title.setAttribute("aria-label", `${greetingText} ${nameText}`);
+  wordIndex += splitHeroWords(greeting, greetingText, wordIndex, delayStep);
+  wordIndex += splitHeroWords(name, nameText, wordIndex, delayStep);
+  wordIndex += splitHeroWords(headline, headlineText, wordIndex, delayStep);
+  wordIndex += splitHeroWords(intro, introText, wordIndex, delayStep);
+  const nameBounds = name.getBoundingClientRect();
+  name.querySelectorAll(".hero-word").forEach((word) => {
+    const bounds = word.getBoundingClientRect();
+    word.style.backgroundSize = `${nameBounds.width}px ${nameBounds.height}px`;
+    word.style.backgroundPosition = `${nameBounds.left - bounds.left}px ${nameBounds.top - bounds.top}px`;
+  });
+  headline.setAttribute("aria-label", headlineText);
+  intro.setAttribute("aria-label", introText);
+
+  const words = document.querySelectorAll(".hero-word");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const shouldAnimate = (initial || short) && !reduceMotion;
+
+  words.forEach((word) => word.classList.toggle("is-visible", !shouldAnimate));
+  content.classList.remove("hero-copy-is-animating", "hero-copy-is-ready");
+  if (!shouldAnimate) {
+    content.classList.add("hero-copy-is-ready");
+    return;
+  }
+
+  content.classList.add("hero-copy-is-animating");
+  window.requestAnimationFrame(() => {
+    words.forEach((word) => word.classList.add("is-visible"));
+  });
+  heroTextAnimationTimer = window.setTimeout(
+    () => {
+      content.classList.remove("hero-copy-is-animating");
+      content.classList.add("hero-copy-is-ready");
+    },
+    (Math.max(totalWords - 1, 0) * delayStep) + transitionDuration,
+  );
+}
+
+function replayHeroTextAnimation() {
+  renderHeroTextAnimation({ short: true });
 }
 
 // Hero Card Stat Pills

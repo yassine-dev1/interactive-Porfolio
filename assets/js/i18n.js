@@ -141,6 +141,7 @@ function toggleLanguage() {
   applyLanguage(currentLang);
   renderAll();
   initializeMotion();
+  replayHeroTextAnimation();
 }
 
 function applyLanguage(lang) {
