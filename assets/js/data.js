@@ -10,13 +10,13 @@ const INITIAL_DATA = {
     professionalHeadlineFr:
       "Applications Web & Mobile · Microservices · Intégration LLM/RAG",
     shortIntroduction:
-      "Final-year software engineering student at FST Mohammedia, building full-stack web and mobile applications, service-oriented architectures and LLM-powered features.",
+      "Final-year software engineering student at FST Mohammedia, I build full-stack web and mobile applications, service-oriented architectures and LLM-powered features. Curious about AI agents and automation with n8n, I am developing these skills alongside my Full-Stack profile.",
     shortIntroductionFr:
-      "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM.",
+      "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.",
     aboutMe:
-      "I am a final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development.",
+      "Final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia, specializing in Full-Stack development. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development. Curious about AI agents and workflow automation with n8n, I am building these skills (Scrimba \"Learn AI Agents\" course) to bring intelligent features into real-world applications.",
     aboutMeFr:
-      "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile.",
+      "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia, je me spécialise en développement Full-Stack. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile. Curieux des agents IA et de l'automatisation de workflows avec n8n, je me forme à ces domaines (cours Scrimba « Learn AI Agents ») afin d'intégrer des fonctionnalités intelligentes dans des applications concrètes.",
     careerObjective:
       "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents. Available from January 2027.",
     careerObjectiveFr:
@@ -33,8 +33,8 @@ const INITIAL_DATA = {
   },
   contact: {
     email: "eljarjiniyassine1@gmail.com",
-    phone: "",
-    phoneDisplay: "linkedin.com/in/el-jarjini-yassine",
+    phone: "+212644847468",
+    phoneDisplay: "+212 6 44 84 74 68",
     whatsappUrl: "https://www.linkedin.com/in/el-jarjini-yassine/",
     linkedin: "https://www.linkedin.com/in/el-jarjini-yassine/",
     github: "https://github.com/yassine-dev1",
@@ -382,7 +382,7 @@ const INITIAL_DATA = {
       technologies: [".NET 8", "SQL Server", "Redis", "LLM", "RAG"],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/ShopApp",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/ecommerce-ai.webp",
       metric: "Distributed cart · RAG assistant",
       metricFr: "Panier distribué · Assistant RAG",
       overview:
@@ -424,7 +424,7 @@ const INITIAL_DATA = {
       technologies: ["C++", "WebAssembly", "React", "Dijkstra", "A*", "BFS"],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/PathFinding",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/pathfinding.webp",
       metric: "A*, Dijkstra, BFS on 800-node grids",
       metricFr: "A*, Dijkstra, BFS sur grilles de 800 nœuds",
       overview:
@@ -472,7 +472,7 @@ const INITIAL_DATA = {
       ],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/StoreShop",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/storeshop.webp",
       metric: "Java / Spring ecosystem",
       metricFr: "Écosystème Java / Spring",
       overview:
@@ -499,7 +499,7 @@ const INITIAL_DATA = {
       ],
       liveDemo: "",
       githubUrl: "https://github.com/yassine-dev1/academic_orientation",
-      imageUrl: "",
+      imageUrl: "assets/images/projects/academic-orientation.webp",
       metric: "Forward chaining + RIASEC",
       metricFr: "Chaînage avant + RIASEC",
       overview:
