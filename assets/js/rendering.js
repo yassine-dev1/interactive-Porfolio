@@ -84,6 +84,9 @@ function renderAll() {
   if (le && p.cvUrlEn && !/^data:/.test(p.cvUrlEn)) le.href = p.cvUrlEn;
 
   // About
+  renderAboutPortrait(p, isFr);
+  document.getElementById("aboutHeadlineText").textContent =
+    isFr && p.aboutHeadlineFr ? p.aboutHeadlineFr : p.aboutHeadline || "";
   document.getElementById("aboutMeP1").textContent =
     isFr && p.aboutMeFr ? p.aboutMeFr : p.aboutMe;
   document.getElementById("careerObjectiveText").textContent =
@@ -111,6 +114,32 @@ function renderAll() {
   renderEducation();
 
   lucide.createIcons();
+}
+
+function renderAboutPortrait(personal, isFr) {
+  const grid = document.querySelector("#about .about-grid");
+  let figure = grid.querySelector(".about-photo");
+  grid.classList.toggle("about-grid--portrait", Boolean(personal.aboutImage));
+  if (!personal.aboutImage) {
+    if (figure) figure.remove();
+    return;
+  }
+  if (!figure) {
+    figure = document.createElement("figure");
+    figure.className = "about-photo";
+    const image = document.createElement("img");
+    image.width = 800;
+    image.height = 1000;
+    image.loading = "lazy";
+    image.decoding = "async";
+    figure.appendChild(image);
+    grid.prepend(figure);
+  }
+  const image = figure.querySelector("img");
+  image.src = personal.aboutImage;
+  image.alt = isFr && personal.aboutImageAltFr
+    ? personal.aboutImageAltFr
+    : personal.aboutImageAlt || "";
 }
 
 function splitHeroWords(element, text, startIndex, delayStep) {

@@ -1,5 +1,20 @@
 /* Motion definitions kept separate from component geometry. */
 
+.about-photo img {
+  transition: transform 400ms ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-photo:hover img {
+    transform: scale(1.03);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-photo img {
+    transition: none;
+    transform: none;
+  }
+}
+
 @keyframes pulseAnim {
   0% {
     transform: scale(0.95);
