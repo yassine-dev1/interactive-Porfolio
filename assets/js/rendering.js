@@ -374,6 +374,10 @@ function renderProjects() {
   const grid = document.getElementById("projectsGrid");
   grid.innerHTML = "";
   const list = data.projects || [];
+  grid.classList.toggle(
+    "projects-grid--two-columns",
+    list.length === 2 || list.length === 4,
+  );
   const isFr = currentLang === "fr";
 
   list.forEach((p) => {
@@ -390,8 +394,7 @@ function renderProjects() {
     const bannerMarkup = p.imageUrl
       ? `
           <div class="project-header-banner has-custom-image">
-            <img class="project-card-image" src="${p.imageUrl}" alt="${projectName}" width="1200" height="600" loading="lazy" decoding="async">
-            <span class="project-img-pill"><i data-lucide="image" class="project-preview-icon"></i> ${isFr ? "Aperçu" : "Preview"}</span>
+            <img class="project-card-image" src="${p.imageUrl}" alt="${projectName}" width="1200" height="675" loading="lazy" decoding="async">
           </div>
         `
       : `
@@ -430,7 +433,7 @@ function openProjectModal(p) {
   const modalImageMarkup = p.imageUrl
     ? `
         <div class="project-modal-image-wrap">
-          <img src="${p.imageUrl}" alt="${isFr && p.nameFr ? p.nameFr : p.name}" class="project-modal-image" width="1200" height="600" loading="lazy" decoding="async">
+          <img src="${p.imageUrl}" alt="${isFr && p.nameFr ? p.nameFr : p.name}" class="project-modal-image" width="1200" height="675" loading="lazy" decoding="async">
         </div>
       `
     : "";

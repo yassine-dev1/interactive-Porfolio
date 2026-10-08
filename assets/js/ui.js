@@ -3,6 +3,7 @@
 let scrollMotionObserver = null;
 let motionPreferenceQuery = null;
 let motionPreferenceListenerAttached = false;
+let sectionNavigationObserver = null;
 
 function initializeMotion() {
   if (scrollMotionObserver) scrollMotionObserver.disconnect();
@@ -71,6 +72,35 @@ function initializeMotion() {
   );
 
   targets.forEach((element) => scrollMotionObserver.observe(element));
+}
+
+function initializeSectionNavigation() {
+  if (sectionNavigationObserver) sectionNavigationObserver.disconnect();
+  const sections = [...document.querySelectorAll("main section[id]")];
+  const links = [...document.querySelectorAll('.nav-link[href^="#"]')];
+  const headerHeight = document.querySelector(".site-header").offsetHeight;
+
+  sectionNavigationObserver = new IntersectionObserver(
+    (entries) => {
+      const activeEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!activeEntry) return;
+
+      links.forEach((link) => {
+        const active = link.getAttribute("href") === `#${activeEntry.target.id}`;
+        link.classList.toggle("active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    },
+    {
+      rootMargin: `-${headerHeight}px 0px -65% 0px`,
+      threshold: [0, 0.1, 0.25, 0.5],
+    },
+  );
+
+  sections.forEach((section) => sectionNavigationObserver.observe(section));
 }
 
 function startThemeTransition() {
@@ -150,6 +180,13 @@ function handleContactSubmit(e) {
   const body = encodeURIComponent(
     (f[2] || "") + "\n\n— " + (f[0] || "") + " (" + (f[1] || "") + ")",
   );
+  const status = document.getElementById("contactSubmitStatus");
+  const statusEmail = document.getElementById("contactStatusEmail");
+  statusEmail.textContent = to;
+  statusEmail.href = `mailto:${to}`;
+  status.hidden = false;
+  document.getElementById("copyContactEmail").hidden = false;
+  e.target.reset();
   window.location.href =
     "mailto:" +
     to +
@@ -157,7 +194,26 @@ function handleContactSubmit(e) {
     encodeURIComponent("Contact portfolio – " + (f[0] || "")) +
     "&body=" +
     body;
-  e.target.reset();
+}
+
+async function copyContactEmail() {
+  const email = (data.contact && data.contact.email) || "";
+  try {
+    await navigator.clipboard.writeText(email);
+  } catch (err) {
+    const field = document.createElement("textarea");
+    field.value = email;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.appendChild(field);
+    field.select();
+    document.execCommand("copy");
+    field.remove();
+  }
+  const button = document.getElementById("copyContactEmail");
+  button.textContent = I18N[currentLang].form_email_copied;
+  window.setTimeout(() => applyLanguage(currentLang), 1800);
 }
 
 async function triggerDownload(url, fileName) {

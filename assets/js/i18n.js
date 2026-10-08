@@ -58,6 +58,12 @@ const I18N = {
     form_email: "Your Email",
     form_msg: "Your Message",
     form_send: "Send Message",
+    form_name_placeholder: "Your full name",
+    form_email_placeholder: "you@example.com",
+    form_message_placeholder: "Tell me about your internship offer or project...",
+    form_mailto_status: "Your email app will open. Otherwise, write to",
+    form_copy_email: "Copy email",
+    form_email_copied: "Email copied.",
     footer_rights: "All rights reserved.",
     view_details_btn: "Explore Project",
     live_demo_btn: "Live Demo",
@@ -119,6 +125,12 @@ const I18N = {
     form_email: "Votre email",
     form_msg: "Votre message",
     form_send: "Envoyer",
+    form_name_placeholder: "Votre nom complet",
+    form_email_placeholder: "vous@exemple.com",
+    form_message_placeholder: "Parlez-moi de votre offre de stage ou de votre projet…",
+    form_mailto_status: "Votre application de messagerie va s'ouvrir. Sinon, écrivez-moi à",
+    form_copy_email: "Copier l'email",
+    form_email_copied: "Email copié.",
     footer_rights: "Tous droits réservés.",
     view_details_btn: "Voir le projet",
     live_demo_btn: "Démo en ligne",
@@ -129,6 +141,7 @@ function init() {
   applyLanguage(currentLang);
   renderAll();
   initializeMotion();
+  initializeSectionNavigation();
   fetchLatestFromCloud();
 }
 
@@ -154,5 +167,9 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (dict[key]) el.setAttribute("placeholder", dict[key]);
   });
 }
