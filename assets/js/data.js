@@ -2,7 +2,7 @@
 
 const INITIAL_DATA = {
   personal: {
-    fullName: "Yassine El Jarjini",
+    fullName: "Yassine EL JARJINI",
     professionalTitle: "Full-Stack Software Engineer",
     professionalTitleFr: "Ingénieur Logiciel Full-Stack",
     professionalHeadline:
@@ -120,8 +120,8 @@ const INITIAL_DATA = {
       icon: "graduation-cap",
       label: "Education",
       labelFr: "Formation",
-      value: "FST Mohammedia – Engineering Cycle (GLSID)",
-      valueFr: "FST Mohammedia – Cycle Ingénieur (GLSID)",
+      value: "FST Mohammedia – Engineering Cycle (ILISI)",
+      valueFr: "FST Mohammedia – Cycle Ingénieur (ILISI)",
     },
     {
       id: "ps3",
@@ -144,7 +144,7 @@ const INITIAL_DATA = {
       icon: "languages",
       label: "Languages",
       labelFr: "Langues",
-      value: "French (native) · French B2 · English B1",
+      value: "Arabic (native) · French B2 · English B1",
       valueFr: "Arabe (natif) · Français B2 · Anglais B1",
     },
   ],

@@ -9,13 +9,13 @@ function renderAll() {
   const c = data.contact || {};
 
   const displayName =
-    isFr && p.fullNameFr ? p.fullNameFr : p.fullName || "Yassine El Jarjini";
+    isFr && p.fullNameFr ? p.fullNameFr : p.fullName || "Yassine EL JARJINI";
   const displayTitle =
     isFr && p.professionalTitleFr
       ? p.professionalTitleFr
       : p.professionalTitle || "AI Automation Specialist & Systems Developer";
 
-  document.getElementById("navBrandName").textContent = "Yassine El Jarjini";
+  document.getElementById("navBrandName").textContent = "Yassine EL JARJINI";
   document.getElementById("footerBrandName").textContent = displayName;
 
   const profilePhoto = p && p.profileImage ? p.profileImage : "profile.jpg";
