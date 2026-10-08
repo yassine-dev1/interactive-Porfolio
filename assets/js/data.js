@@ -189,9 +189,9 @@ const INITIAL_DATA = {
         {
           name: "Spring Boot",
         },
-        {
-          name: ".NET",
-        },
+        // {
+        //   name: ".NET",
+        // },
         {
           name: "Tailwind CSS",
         },
@@ -249,10 +249,10 @@ const INITIAL_DATA = {
           name: "SQL Server",
         },
         {
-          name: "Oracle PL/SQL",
+          name: "Redis",
         },
         {
-          name: "Redis",
+          name: "Hibernete",
         },
         {
           name: "Prisma ORM",
