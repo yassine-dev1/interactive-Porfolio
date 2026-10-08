@@ -1,5 +1,9 @@
 /* INITIAL_DATA and synchronized runtime state. */
 
+// Enable only after remote content is ready for publication.
+const ENABLE_REMOTE_DATA = false;
+const DATA_VERSION = 1;
+
 const INITIAL_DATA = {
   personal: {
     fullName: "Yassine EL JARJINI",
@@ -560,32 +564,42 @@ const CLOUD_URL =
 let data = INITIAL_DATA;
 let currentLang = localStorage.getItem("portfolio_lang") || "fr";
 
-// LocalStorage Initial Cache
-try {
-  const cached = localStorage.getItem("portfolio_cache");
-  if (cached) {
-    data = JSON.parse(cached);
-  }
-} catch (err) {
-  // Invalid cached data is ignored; INITIAL_DATA remains the fallback.
-}
-
-// Live Cross-Tab BroadcastChannel listener for instant real-time updates!
-try {
-  const bc = new BroadcastChannel("portfolio_sync");
-  bc.onmessage = (event) => {
-    if (event.data && event.data.type === "DATA_UPDATED") {
-      data = event.data.data;
-      renderAll();
+if (ENABLE_REMOTE_DATA) {
+  try {
+    const cached = JSON.parse(localStorage.getItem("portfolio_cache") || "null");
+    if (cached?.version === DATA_VERSION && cached.data?.personal) {
+      data = cached.data;
     }
-  };
-} catch (err) {
-  // BroadcastChannel is optional; the portfolio remains functional in one tab.
-}
-
-window.addEventListener("storage", (e) => {
-  if (e.key === "portfolio_cache" && e.newValue) {
-    data = JSON.parse(e.newValue);
-    renderAll();
+  } catch (err) {
+    console.warn("Portfolio cache is invalid; using bundled data.", err);
   }
-});
+
+  try {
+    const channel = new BroadcastChannel("portfolio_sync");
+    channel.onmessage = (event) => {
+      if (
+        event.data?.type === "DATA_UPDATED" &&
+        event.data.version === DATA_VERSION &&
+        event.data.data?.personal
+      ) {
+        data = event.data.data;
+        renderAll();
+      }
+    };
+  } catch (err) {
+    console.warn("Cross-tab portfolio sync is unavailable.", err);
+  }
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== "portfolio_cache" || !event.newValue) return;
+    try {
+      const cached = JSON.parse(event.newValue);
+      if (cached.version === DATA_VERSION && cached.data?.personal) {
+        data = cached.data;
+        renderAll();
+      }
+    } catch (err) {
+      console.warn("Updated portfolio cache is invalid.", err);
+    }
+  });
+}

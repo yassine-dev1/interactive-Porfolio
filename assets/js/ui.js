@@ -113,7 +113,7 @@ function closeMobileMenu() {
 }
 
 async function fetchLatestFromCloud() {
-  if (!CLOUD_URL) return;
+  if (!ENABLE_REMOTE_DATA || !CLOUD_URL) return;
   try {
     const res = await fetch(CLOUD_URL, { cache: "no-store" });
     if (res.ok) {
@@ -127,7 +127,10 @@ async function fetchLatestFromCloud() {
         const parsed = JSON.parse(json.fields.payload.stringValue);
         if (parsed && parsed.personal) {
           data = parsed;
-          localStorage.setItem("portfolio_cache", JSON.stringify(data));
+          localStorage.setItem(
+            "portfolio_cache",
+            JSON.stringify({ version: DATA_VERSION, data }),
+          );
           renderAll();
           initializeMotion();
         }
