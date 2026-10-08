@@ -7,16 +7,16 @@ const DATA_VERSION = 1;
 const INITIAL_DATA = {
   personal: {
     fullName: "Yassine EL JARJINI",
-    professionalTitle: "Full-Stack Software Engineer",
-    professionalTitleFr: "Ingénieur Logiciel Full-Stack",
+    professionalTitle: "Software Engineering Student",
+    professionalTitleFr: "Élève ingénieur logiciel",
     professionalHeadline:
-      "Web & Mobile Apps · Microservices · LLM/RAG integration",
+      "Seeking a Full-Stack PFE internship · January 2027",
     professionalHeadlineFr:
-      "Applications Web & Mobile · Microservices · Intégration LLM/RAG",
+      "Stage PFE Full-Stack · janvier 2027",
     shortIntroduction:
-      "Final-year software engineering student at FST Mohammedia, I build full-stack web and mobile applications, service-oriented architectures and LLM-powered features. Curious about AI agents and automation with n8n, I am developing these skills alongside my Full-Stack profile.",
+      "I build Full-Stack web applications with React, Next.js and .NET, from user-facing features to APIs and data services.",
     shortIntroductionFr:
-      "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.",
+      "Je développe des applications Web Full-Stack avec React, Next.js et .NET, de l'interface aux API et aux données.",
     aboutMe:
       "Final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia, specializing in Full-Stack development. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development. Curious about AI agents and workflow automation with n8n, I am building these skills (Scrimba \"Learn AI Agents\" course) to bring intelligent features into real-world applications.",
     aboutMeFr:
@@ -41,7 +41,7 @@ const INITIAL_DATA = {
     email: "eljarjiniyassine1@gmail.com",
     phone: "+212644847468",
     phoneDisplay: "+212 6 44 84 74 68",
-    whatsappUrl: "https://www.linkedin.com/in/el-jarjini-yassine/",
+    whatsappUrl: "https://wa.me/212644847468",
     linkedin: "https://www.linkedin.com/in/el-jarjini-yassine/",
     github: "https://github.com/yassine-dev1",
     portfolioUrl: "",
@@ -307,10 +307,6 @@ const INITIAL_DATA = {
       icon: "brain",
       skills: [
         {
-          name: "AI-assisted development (vibe coding)",
-          nameFr: "Développement assisté par IA (vibe coding)",
-        },
-        {
           name: "Analytical problem solving",
           nameFr: "Résolution analytique de problèmes",
         },
@@ -428,33 +424,6 @@ const INITIAL_DATA = {
         "Desktop application in Python and CustomTkinter combining a forward-chaining inference engine with the RIASEC personality model to compute domain compatibility, and using the Gemini API to generate motivation letters.",
       overviewFr:
         "Application desktop Python/CustomTkinter combinant un moteur d'inférence à chaînage avant et le modèle de personnalité RIASEC pour calculer la compatibilité avec les domaines, et utilisant l'API Gemini pour générer des lettres de motivation.",
-    },
-        {
-      id: "storeshop",
-      name: "StoreShop – Spring Boot E-Commerce",
-      nameFr: "StoreShop – E-Commerce Spring Boot",
-      category: "Backend · Java",
-      categoryFr: "Backend · Java",
-      shortDescription:
-        "E-commerce web application built with Spring Boot, Spring Security and MySQL.",
-      shortDescriptionFr:
-        "Application e-commerce web construite avec Spring Boot, Spring Security et MySQL.",
-      technologies: [
-        "Spring Boot 3",
-        "Java 17",
-        "MySQL",
-        "Thymeleaf",
-        "Spring Security",
-      ],
-      liveDemo: "",
-      githubUrl: "https://github.com/yassine-dev1/StoreShop",
-      imageUrl: "assets/images/projects/storeshop.webp",
-      metric: "Java / Spring ecosystem",
-      metricFr: "Écosystème Java / Spring",
-      overview:
-        "E-commerce application developed with Spring Boot 3 and Java 17, using Thymeleaf templates, Spring Security and a MySQL database.",
-      overviewFr:
-        "Application e-commerce développée avec Spring Boot 3 et Java 17, utilisant des templates Thymeleaf, Spring Security et une base MySQL.",
     },
   ],
   education: [

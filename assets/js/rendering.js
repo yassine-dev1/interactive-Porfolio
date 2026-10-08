@@ -51,15 +51,11 @@ function renderAll() {
   if (c.linkedin)
     document.getElementById("heroSocialLinkedin").href = c.linkedin;
   if (c.github) document.getElementById("heroSocialGithub").href = c.github;
-  if (c.linkedin) {
-    const linkedinCard = document.getElementById("contactLinkedinCard");
-    if (linkedinCard) linkedinCard.href = c.linkedin;
-    const linkedinText = document.getElementById("contactLinkedinText");
-    if (linkedinText) {
-      linkedinText.textContent = c.linkedin
-        .replace(/^https?:\/\/(www\.)?/, "")
-        .replace(/\/$/, "");
-    }
+  if (c.whatsappUrl) {
+    const whatsappCard = document.getElementById("contactWhatsAppCard");
+    if (whatsappCard) whatsappCard.href = c.whatsappUrl;
+    const whatsappText = document.getElementById("contactWhatsAppText");
+    if (whatsappText) whatsappText.textContent = c.phoneDisplay || c.phone || "";
   }
   if (c.email) {
     document.getElementById("heroSocialEmail").href = "mailto:" + c.email;
