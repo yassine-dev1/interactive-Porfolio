@@ -2,6 +2,7 @@
 
 const I18N = {
   en: {
+    skip_to_content: "Skip to content",
     nav_home: "Home",
     nav_about: "About",
     nav_skills: "Skills",
@@ -14,7 +15,6 @@ const I18N = {
     hero_greeting: "Hi, I'm",
     hero_explore_btn: "Explore Projects",
     hero_download_cv_btn: "Download CV",
-    hero_print_btn: "Print Portfolio",
     about_eyebrow: "About Me",
     about_heading_1: "Full-Stack Engineering Applied to",
     about_heading_2: "Real-World Products",
@@ -59,11 +59,18 @@ const I18N = {
     form_email: "Your Email",
     form_msg: "Your Message",
     form_send: "Send Message",
+    form_name_placeholder: "Your full name",
+    form_email_placeholder: "you@example.com",
+    form_message_placeholder: "Tell me about your internship offer or project...",
+    form_mailto_status: "Your email app will open. Otherwise, write to",
+    form_copy_email: "Copy email",
+    form_email_copied: "Email copied.",
     footer_rights: "All rights reserved.",
     view_details_btn: "Explore Project",
     live_demo_btn: "Live Demo",
   },
   fr: {
+    skip_to_content: "Aller au contenu",
     nav_home: "Accueil",
     nav_about: "À propos",
     nav_skills: "Compétences",
@@ -76,7 +83,6 @@ const I18N = {
     hero_greeting: "Bonjour, je suis",
     hero_explore_btn: "Voir les projets",
     hero_download_cv_btn: "Télécharger le CV",
-    hero_print_btn: "Imprimer le portfolio",
     about_eyebrow: "À propos",
     about_heading_1: "Ingénierie Full-Stack appliquée à",
     about_heading_2: "des produits concrets",
@@ -121,6 +127,12 @@ const I18N = {
     form_email: "Votre email",
     form_msg: "Votre message",
     form_send: "Envoyer",
+    form_name_placeholder: "Votre nom complet",
+    form_email_placeholder: "vous@exemple.com",
+    form_message_placeholder: "Parlez-moi de votre offre de stage ou de votre projet…",
+    form_mailto_status: "Votre application de messagerie va s'ouvrir. Sinon, écrivez-moi à",
+    form_copy_email: "Copier l'email",
+    form_email_copied: "Email copié.",
     footer_rights: "Tous droits réservés.",
     view_details_btn: "Voir le projet",
     live_demo_btn: "Démo en ligne",
@@ -131,6 +143,7 @@ function init() {
   applyLanguage(currentLang);
   renderAll();
   initializeMotion();
+  initializeSectionNavigation();
   fetchLatestFromCloud();
 }
 
@@ -156,5 +169,9 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     if (dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (dict[key]) el.setAttribute("placeholder", dict[key]);
   });
 }

@@ -1,5 +1,9 @@
 /* INITIAL_DATA and synchronized runtime state. */
 
+// Enable only after remote content is ready for publication.
+const ENABLE_REMOTE_DATA = false;
+const DATA_VERSION = 1;
+
 const INITIAL_DATA = {
   personal: {
     fullName: "Yassine EL JARJINI",
@@ -18,9 +22,9 @@ const INITIAL_DATA = {
     aboutMeFr:
       "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia, je me spécialise en développement Full-Stack. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile. Curieux des agents IA et de l'automatisation de workflows avec n8n, je me forme à ces domaines (cours Scrimba « Learn AI Agents ») afin d'intégrer des fonctionnalités intelligentes dans des applications concrètes.",
     careerObjective:
-      "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents. Available from January 2027.",
+      "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents.",
     careerObjectiveFr:
-      "À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA. Disponible à partir de janvier 2027.",
+      "À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA.",
     currentLocation: "Casablanca, Morocco",
     currentLocationFr: "Casablanca, Maroc",
     availability: "Open to a PFE internship · From January 2027",
@@ -61,12 +65,6 @@ const INITIAL_DATA = {
       label: "Certifications",
       labelFr: "Certifications",
     },
-    {
-      id: "s4",
-      number: "Jan 2027",
-      label: "PFE availability",
-      labelFr: "Disponibilité PFE",
-    },
   ],
   floatingBadges: [
     {
@@ -95,15 +93,6 @@ const INITIAL_DATA = {
       title: "Microservices & SOA",
       titleFr: "Microservices & SOA",
       targetSection: "#experience",
-    },
-    {
-      id: "b4",
-      icon: "graduation-cap",
-      category: "Status",
-      categoryFr: "Statut",
-      title: "PFE · January 2027",
-      titleFr: "PFE · Janvier 2027",
-      targetSection: "#contact",
     },
   ],
   professionalSummary: [
@@ -392,27 +381,6 @@ const INITIAL_DATA = {
       overviewFr:
         "Plateforme e-commerce ASP.NET Core (.NET 8) avec cache haute performance et panier distribué sur Redis, ainsi qu'un assistant conversationnel utilisant le RAG pour des réponses fiables basées sur le catalogue produit.",
     },
-    // {
-    //   id: "friend-locator",
-    //   name: "Friend Locator",
-    //   nameFr: "Friend Locator",
-    //   category: "Mobile · Full-Stack",
-    //   categoryFr: "Mobile · Full-Stack",
-    //   shortDescription:
-    //     "Mobile app for sharing location in real time between friends.",
-    //   shortDescriptionFr:
-    //     "Application mobile de partage de position en temps réel entre amis.",
-    //   technologies: ["React Native", "NestJS", "PostgreSQL"],
-    //   liveDemo: "",
-    //   githubUrl: "https://github.com/yassine-dev1/FreindLocator",
-    //   imageUrl: "",
-    //   metric: "Real-time location sharing",
-    //   metricFr: "Partage de position en temps réel",
-    //   overview:
-    //     "Mobile application built with React Native, a NestJS API and a PostgreSQL database, letting friends share their position in real time.",
-    //   overviewFr:
-    //     "Application mobile construite avec React Native, une API NestJS et une base PostgreSQL, permettant à des amis de partager leur position en temps réel.",
-    // },
     {
       id: "pathfinding",
       name: "Pathfinding Visualizer Engine",
@@ -488,27 +456,6 @@ const INITIAL_DATA = {
       overviewFr:
         "Application e-commerce développée avec Spring Boot 3 et Java 17, utilisant des templates Thymeleaf, Spring Security et une base MySQL.",
     },
-    // {
-    //   id: "service-manager",
-    //   name: "ServiceManager – Intervention Management",
-    //   nameFr: "ServiceManager – Gestion des interventions",
-    //   category: "Web · Internship project",
-    //   categoryFr: "Web · Projet de stage",
-    //   shortDescription:
-    //     "Web app built for Safarelec to digitize the management of internal interventions.",
-    //   shortDescriptionFr:
-    //     "Application web conçue pour Safarelec afin de digitaliser la gestion des interventions internes.",
-    //   technologies: ["React.js", "Express.js"],
-    //   liveDemo: "",
-    //   githubUrl: "https://github.com/yassine-dev1/ServiceManager",
-    //   imageUrl: "",
-    //   metric: "Real client · Safarelec",
-    //   metricFr: "Cas client réel · Safarelec",
-    //   overview:
-    //     "Web application designed for Safarelec (El Jadida) to digitize the internal intervention process and improve the follow-up of import/export flows.",
-    //   overviewFr:
-    //     "Application web conçue pour Safarelec (El Jadida) afin de digitaliser le processus de gestion des interventions internes et d'optimiser le suivi des flux import/export.",
-    // },
   ],
   education: [
     {
@@ -560,32 +507,42 @@ const CLOUD_URL =
 let data = INITIAL_DATA;
 let currentLang = localStorage.getItem("portfolio_lang") || "fr";
 
-// LocalStorage Initial Cache
-try {
-  const cached = localStorage.getItem("portfolio_cache");
-  if (cached) {
-    data = JSON.parse(cached);
-  }
-} catch (err) {
-  // Invalid cached data is ignored; INITIAL_DATA remains the fallback.
-}
-
-// Live Cross-Tab BroadcastChannel listener for instant real-time updates!
-try {
-  const bc = new BroadcastChannel("portfolio_sync");
-  bc.onmessage = (event) => {
-    if (event.data && event.data.type === "DATA_UPDATED") {
-      data = event.data.data;
-      renderAll();
+if (ENABLE_REMOTE_DATA) {
+  try {
+    const cached = JSON.parse(localStorage.getItem("portfolio_cache") || "null");
+    if (cached?.version === DATA_VERSION && cached.data?.personal) {
+      data = cached.data;
     }
-  };
-} catch (err) {
-  // BroadcastChannel is optional; the portfolio remains functional in one tab.
-}
-
-window.addEventListener("storage", (e) => {
-  if (e.key === "portfolio_cache" && e.newValue) {
-    data = JSON.parse(e.newValue);
-    renderAll();
+  } catch (err) {
+    console.warn("Portfolio cache is invalid; using bundled data.", err);
   }
-});
+
+  try {
+    const channel = new BroadcastChannel("portfolio_sync");
+    channel.onmessage = (event) => {
+      if (
+        event.data?.type === "DATA_UPDATED" &&
+        event.data.version === DATA_VERSION &&
+        event.data.data?.personal
+      ) {
+        data = event.data.data;
+        renderAll();
+      }
+    };
+  } catch (err) {
+    console.warn("Cross-tab portfolio sync is unavailable.", err);
+  }
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== "portfolio_cache" || !event.newValue) return;
+    try {
+      const cached = JSON.parse(event.newValue);
+      if (cached.version === DATA_VERSION && cached.data?.personal) {
+        data = cached.data;
+        renderAll();
+      }
+    } catch (err) {
+      console.warn("Updated portfolio cache is invalid.", err);
+    }
+  });
+}

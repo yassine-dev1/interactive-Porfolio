@@ -286,12 +286,17 @@ html[dir="rtl"] .skill-badge {
        ========================================================================== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
 }
-@media (max-width: 600px) {
+@media (min-width: 901px) {
+  .projects-grid.projects-grid--two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 .project-card {
@@ -310,7 +315,8 @@ html[dir="rtl"] .skill-badge {
   box-shadow: var(--shadow-md);
 }
 .project-header-banner {
-  height: 130px;
+  height: auto;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(
     135deg,
     rgba(99, 102, 241, 0.3) 0%,
@@ -323,35 +329,7 @@ html[dir="rtl"] .skill-badge {
   overflow: hidden;
 }
 .project-header-banner.has-custom-image {
-  height: auto;
-  aspect-ratio: 2 / 1;
   background: none;
-}
-.project-header-banner.has-custom-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(6, 9, 19, 0.1) 0%,
-    rgba(12, 18, 34, 0.88) 100%
-  );
-}
-.project-img-pill {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(12, 18, 34, 0.8);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 6px;
-  padding: 4px 8px;
-  color: var(--text-on-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
-  z-index: 2;
 }
 .project-header-banner i {
   width: 48px;
@@ -365,6 +343,14 @@ html[dir="rtl"] .skill-badge {
   object-fit: cover;
   object-position: top;
   display: block;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card-image {
+    transition: transform 400ms ease;
+  }
+  .project-card:hover .project-card-image {
+    transform: scale(1.03);
+  }
 }
 .project-card-body {
   padding: 1.75rem;
@@ -1048,6 +1034,17 @@ a.cert-card:hover {
 .contact-form-heading {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
+}
+.contact-submit-status {
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+.contact-submit-status[hidden] {
+  display: none;
+}
+.contact-submit-status a {
+  color: var(--primary-light);
+  overflow-wrap: anywhere;
 }
 .form-submit {
   width: 100%;
