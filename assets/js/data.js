@@ -22,9 +22,9 @@ const INITIAL_DATA = {
     aboutMeFr:
       "Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia, je me spécialise en développement Full-Stack. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile. Curieux des agents IA et de l'automatisation de workflows avec n8n, je me forme à ces domaines (cours Scrimba « Learn AI Agents ») afin d'intégrer des fonctionnalités intelligentes dans des applications concrètes.",
     careerObjective:
-      "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents. Available from January 2027.",
+      "Looking for an end-of-studies (PFE) internship in Full-Stack Web and Mobile development, with a focus on microservices, LLM/AI integration and AI agents.",
     careerObjectiveFr:
-      "À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA. Disponible à partir de janvier 2027.",
+      "À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA.",
     currentLocation: "Casablanca, Morocco",
     currentLocationFr: "Casablanca, Maroc",
     availability: "Open to a PFE internship · From January 2027",
@@ -65,12 +65,6 @@ const INITIAL_DATA = {
       label: "Certifications",
       labelFr: "Certifications",
     },
-    {
-      id: "s4",
-      number: "Jan 2027",
-      label: "PFE availability",
-      labelFr: "Disponibilité PFE",
-    },
   ],
   floatingBadges: [
     {
@@ -99,15 +93,6 @@ const INITIAL_DATA = {
       title: "Microservices & SOA",
       titleFr: "Microservices & SOA",
       targetSection: "#experience",
-    },
-    {
-      id: "b4",
-      icon: "graduation-cap",
-      category: "Status",
-      categoryFr: "Statut",
-      title: "PFE · January 2027",
-      titleFr: "PFE · Janvier 2027",
-      targetSection: "#contact",
     },
   ],
   professionalSummary: [

@@ -38,6 +38,11 @@ function renderAll() {
     isFr && p.currentLocationFr
       ? p.currentLocationFr
       : p.currentLocation || "Casablanca, Maroc";
+  const heroCvLink = document.getElementById("heroDownloadCv");
+  if (heroCvLink) {
+    heroCvLink.href = isFr ? p.cvUrl : p.cvUrlEn;
+    heroCvLink.download = isFr ? p.cvFileName : p.cvFileNameEn;
+  }
 
   renderHeroTextAnimation({ initial: !heroTextAnimationPlayed });
   heroTextAnimationPlayed = true;
