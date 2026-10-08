@@ -753,6 +753,22 @@ html.light .floating-badge:hover {
     left: auto;
     right: 0;
   }
+
+  html[dir="ltr"] .badge-pos-1 {
+    top: 122px;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 190px;
+  }
+
+  html[dir="rtl"] .badge-pos-1 {
+    top: 122px;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    width: 190px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -775,9 +791,7 @@ html.light .floating-badge:hover {
     margin-bottom: 5rem;
   }
 
-  html[dir="ltr"] .badge-pos-1,
   html[dir="ltr"] .badge-pos-3,
-  html[dir="rtl"] .badge-pos-1,
   html[dir="rtl"] .badge-pos-3 {
     bottom: -70px;
   }
