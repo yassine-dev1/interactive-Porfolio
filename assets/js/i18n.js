@@ -49,8 +49,8 @@ const I18N = {
     contact_subheading:
       "Open to a PFE internship in Full-Stack Web and Mobile development from January 2027.",
     contact_channel_title: "Direct Channels",
-    contact_channel_desc: "Reach me on LinkedIn, WhatsApp or email.",
-    contact_whatsapp_label: "WhatsApp",
+    contact_channel_desc: "Reach me on LinkedIn, email or phone.",
+    contact_linkedin_label: "LinkedIn",
     contact_phone_label: "Phone",
     contact_email_label: "Email Address",
     contact_location_label: "Location",
@@ -118,8 +118,8 @@ const I18N = {
     contact_subheading:
       "Disponible pour un stage PFE en développement Full-Stack Web et Mobile à partir de janvier 2027.",
     contact_channel_title: "Coordonnées",
-    contact_channel_desc: "Contactez-moi sur LinkedIn, WhatsApp ou par email.",
-    contact_whatsapp_label: "WhatsApp",
+    contact_channel_desc: "Contactez-moi sur LinkedIn, par email ou par téléphone.",
+    contact_linkedin_label: "LinkedIn",
     contact_phone_label: "Téléphone",
     contact_email_label: "Adresse email",
     contact_location_label: "Localisation",
