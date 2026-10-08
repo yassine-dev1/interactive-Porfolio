@@ -755,19 +755,29 @@ html.light .floating-badge:hover {
   }
 
   html[dir="ltr"] .badge-pos-1 {
-    top: 122px;
+    top: calc(50% - 42px);
     right: auto;
     bottom: auto;
     left: 0;
-    width: 190px;
+    width: 160px;
   }
 
   html[dir="rtl"] .badge-pos-1 {
-    top: 122px;
+    top: calc(50% - 42px);
     right: 0;
     bottom: auto;
     left: auto;
-    width: 190px;
+    width: 160px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1350px) {
+  html[dir="ltr"] .badge-pos-1 {
+    left: -105px;
+  }
+
+  html[dir="rtl"] .badge-pos-1 {
+    right: -105px;
   }
 }
 
