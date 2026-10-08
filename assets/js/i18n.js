@@ -2,6 +2,7 @@
 
 const I18N = {
   en: {
+    skip_to_content: "Skip to content",
     nav_home: "Home",
     nav_about: "About",
     nav_skills: "Skills",
@@ -69,6 +70,7 @@ const I18N = {
     live_demo_btn: "Live Demo",
   },
   fr: {
+    skip_to_content: "Aller au contenu",
     nav_home: "Accueil",
     nav_about: "À propos",
     nav_skills: "Compétences",

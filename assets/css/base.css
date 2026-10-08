@@ -43,7 +43,6 @@
   --font-display: "Outfit", sans-serif;
   --font-sans:
     "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -127,10 +126,6 @@ body {
   transition:
     background-color var(--transition-normal),
     color var(--transition-normal);
-}
-
-html[dir="rtl"] {
-  font-family: "Tajawal", var(--font-sans);
 }
 
 /* Ambient Glow & Grid */

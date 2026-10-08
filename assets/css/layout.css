@@ -179,6 +179,21 @@
   padding: 5rem 0;
   position: relative;
 }
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.65rem 1rem;
+  color: var(--text-primary);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-md);
+  transform: translateY(-160%);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
 .section-border-top {
   border-top: 1px solid var(--border-subtle);
 }
