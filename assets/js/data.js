@@ -14,9 +14,9 @@ const INITIAL_DATA = {
     professionalHeadlineFr:
       "Stage PFE Full-Stack · janvier 2027",
     shortIntroduction:
-      "I build Full-Stack web applications with React, Next.js and .NET, from user-facing features to APIs and data services.",
+      "Final-year software engineering student at FST Mohammedia, I build full-stack web and mobile applications, service-oriented architectures and LLM-powered features. Curious about AI agents and automation with n8n, I am developing these skills alongside my Full-Stack profile.",
     shortIntroductionFr:
-      "Je développe des applications Web Full-Stack avec React, Next.js et .NET, de l'interface aux API et aux données.",
+      "Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.",
     aboutMe:
       "Final-year engineering student in Software Engineering and IT Systems Integration at FST Mohammedia, specializing in Full-Stack development. I have completed two internships: a service-oriented platform with Next.js, TypeScript, Stripe and JWT at SecureValley, and an intervention-management app with React and Express at Safarelec. My personal projects cover C++/WebAssembly, .NET with Redis and RAG, and mobile development. Curious about AI agents and workflow automation with n8n, I am building these skills (Scrimba \"Learn AI Agents\" course) to bring intelligent features into real-world applications.",
     aboutMeFr:
@@ -55,7 +55,7 @@ const INITIAL_DATA = {
     },
     {
       id: "s2",
-      number: "4",
+      number: "3",
       label: "Featured projects",
       labelFr: "Projets phares",
     },
