@@ -117,6 +117,11 @@
           <i data-lucide="moon" id="themeIcon" class="u-icon-18"></i>
         </button>
 
+        <button type="button" class="btn btn-glass btn-sm palette-trigger" id="commandPaletteOpen"
+          aria-haspopup="dialog" aria-expanded="false" aria-label="Open command palette">
+          <kbd>Ctrl K</kbd>
+        </button>
+
         <a href="#contact" class="btn btn-primary btn-sm btn-get-in-touch">
           <span data-i18n="btn_get_in_touch">Get in Touch</span>
           <i data-lucide="arrow-right" class="u-icon-16"></i>
@@ -433,8 +438,27 @@
       <p class="footer-copy">
         © 2026 <span id="footerBrandName">Yassine EL JARJINI</span>. <span data-i18n="footer_rights">All rights reserved.</span>
       </p>
+      <span class="footer-hint" data-i18n="palette_hint">Tip: Ctrl+K</span>
     </div>
   </footer>
+
+  <div class="command-palette" id="commandPalette" role="dialog" aria-modal="true"
+    aria-labelledby="paletteTitle" hidden>
+    <div class="command-palette__panel">
+      <div class="command-palette__header">
+        <h2 id="paletteTitle" data-i18n="palette_title">Commandes rapides</h2>
+        <button type="button" class="command-palette__close" id="commandPaletteClose"
+          aria-label="Close"><span class="u-visually-hidden" data-i18n="palette_close">Close</span>×</button>
+      </div>
+      <input id="paletteSearch" class="command-palette__search" type="search" role="combobox"
+        aria-autocomplete="list" aria-controls="paletteResults" aria-expanded="true"
+        aria-activedescendant="" data-i18n-placeholder="palette_search_placeholder"
+        placeholder="Rechercher une commande…">
+      <div class="command-palette__results" id="paletteResults" role="listbox"></div>
+      <p class="command-palette__hint" data-i18n="palette_keyboard_hint">↑ ↓ pour naviguer · Entrée pour lancer · Échap pour fermer</p>
+    </div>
+  </div>
+  <div class="palette-toast" id="paletteToast" role="status" aria-live="polite"></div>
 
   <!-- PROJECT MODAL -->
   <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
@@ -449,5 +473,6 @@
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/rendering.js"></script>
   <script src="assets/js/ui.js"></script>
+  <script src="assets/js/palette.js"></script>
 </body>
 </html>

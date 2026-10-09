@@ -86,6 +86,7 @@ function initializeTimelineDrawing() {
     return;
   }
 
+  timeline.style.setProperty("--timeline-progress", "0");
   markers.forEach((marker) => marker.classList.remove("is-lit"));
   updateReadingProgress();
   try {

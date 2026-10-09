@@ -67,6 +67,22 @@ const I18N = {
     form_copy_email: "Copy email",
     form_email_copied: "Email copied.",
     footer_rights: "All rights reserved.",
+    palette_title: "Quick commands",
+    palette_close: "Close",
+    palette_search_placeholder: "Search commands…",
+    palette_keyboard_hint: "↑ ↓ to navigate · Enter to run · Esc to close",
+    palette_hint: "Tip: Ctrl+K",
+    palette_empty: "No matching commands.",
+    palette_cv_fr: "Download CV in French",
+    palette_cv_en: "Download CV in English",
+    palette_linkedin: "Open LinkedIn profile",
+    palette_github: "Open GitHub profile",
+    palette_copy_email: "Copy email address",
+    palette_language: "Switch language",
+    palette_theme: "Switch color theme",
+    palette_email_copied: "Email address copied.",
+    palette_email_failed: "Could not copy the email address.",
+    palette_open: "Open command palette",
     view_details_btn: "Explore Project",
     live_demo_btn: "Live Demo",
   },
@@ -136,6 +152,22 @@ const I18N = {
     form_copy_email: "Copier l'email",
     form_email_copied: "Email copié.",
     footer_rights: "Tous droits réservés.",
+    palette_title: "Commandes rapides",
+    palette_close: "Fermer",
+    palette_search_placeholder: "Rechercher une commande…",
+    palette_keyboard_hint: "↑ ↓ pour naviguer · Entrée pour lancer · Échap pour fermer",
+    palette_hint: "Astuce : Ctrl+K",
+    palette_empty: "Aucune commande correspondante.",
+    palette_cv_fr: "Télécharger le CV en français",
+    palette_cv_en: "Télécharger le CV en anglais",
+    palette_linkedin: "Ouvrir le profil LinkedIn",
+    palette_github: "Ouvrir le profil GitHub",
+    palette_copy_email: "Copier l’adresse email",
+    palette_language: "Changer de langue",
+    palette_theme: "Changer de thème",
+    palette_email_copied: "Adresse email copiée.",
+    palette_email_failed: "Impossible de copier l’adresse email.",
+    palette_open: "Ouvrir la palette de commandes",
     view_details_btn: "Voir le projet",
     live_demo_btn: "Démo en ligne",
   },
@@ -176,4 +208,7 @@ function applyLanguage(lang) {
     const key = el.getAttribute("data-i18n-placeholder");
     if (dict[key]) el.setAttribute("placeholder", dict[key]);
   });
+  if (typeof updateCommandPaletteLanguage === "function") {
+    updateCommandPaletteLanguage();
+  }
 }
