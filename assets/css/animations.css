@@ -147,8 +147,8 @@ html.motion-reduced .motion-reveal {
     transform: none;
   }
 
-  .project-card:hover,
-  .project-card.is-pointer-active {
+  .projects-grid .project-card:hover,
+  .projects-grid .project-card.is-pointer-active {
     transform: none;
     will-change: auto;
   }
