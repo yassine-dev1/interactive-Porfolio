@@ -6,6 +6,22 @@ let motionPreferenceListenerAttached = false;
 let sectionNavigationObserver = null;
 let heroCounterObserver = null;
 let heroCountersStarted = false;
+let readingProgressFrame = 0;
+
+function updateReadingProgress() {
+  if (readingProgressFrame) return;
+  readingProgressFrame = window.requestAnimationFrame(() => {
+    readingProgressFrame = 0;
+    const bar = document.getElementById("readingProgress");
+    if (!bar) return;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    bar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+  });
+}
+
+window.addEventListener("scroll", updateReadingProgress, { passive: true });
+window.addEventListener("resize", updateReadingProgress, { passive: true });
 
 function animateHeroStatCounters(grid) {
   const numbers = [...grid.querySelectorAll(".stat-number[data-count]")];
@@ -356,4 +372,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeCvMenu();
 });
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+  updateReadingProgress();
+});
