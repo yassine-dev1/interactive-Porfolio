@@ -219,12 +219,17 @@ function renderHeroCardStats() {
   stats.forEach((s) => {
     const pill = document.createElement("div");
     pill.className = "stat-pill";
+    const numericValue = /^\d+$/.test(String(s.number));
     pill.innerHTML = `
-          <div class="stat-number">${s.number}</div>
+          <div class="stat-number"${numericValue ? ` aria-label="${s.number}" data-count="${s.number}"` : ""}>${s.number}</div>
           <div class="stat-label">${isFr && s.labelFr ? s.labelFr : s.label}</div>
         `;
     grid.appendChild(pill);
   });
+
+  if (typeof animateHeroStatCounters === "function") {
+    animateHeroStatCounters(grid);
+  }
 }
 
 // Interactive Closer Floating Badges

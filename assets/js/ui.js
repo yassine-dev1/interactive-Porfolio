@@ -4,6 +4,59 @@ let scrollMotionObserver = null;
 let motionPreferenceQuery = null;
 let motionPreferenceListenerAttached = false;
 let sectionNavigationObserver = null;
+let heroCounterObserver = null;
+let heroCountersStarted = false;
+
+function animateHeroStatCounters(grid) {
+  const numbers = [...grid.querySelectorAll(".stat-number[data-count]")];
+  const setFinalValues = () => {
+    numbers.forEach((number) => {
+      number.textContent = number.dataset.count;
+    });
+  };
+
+  if (heroCountersStarted) {
+    setFinalValues();
+    return;
+  }
+
+  const begin = () => {
+    if (heroCountersStarted) return;
+    heroCountersStarted = true;
+    const startTime = performance.now();
+    const duration = 900;
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - (1 - progress) ** 3;
+      numbers.forEach((number) => {
+        number.textContent = String(Math.round(Number(number.dataset.count) * eased));
+      });
+      if (progress < 1) window.requestAnimationFrame(tick);
+      else setFinalValues();
+    };
+    window.requestAnimationFrame(tick);
+  };
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroCountersStarted = true;
+    setFinalValues();
+    return;
+  }
+
+  if (heroCounterObserver) heroCounterObserver.disconnect();
+  try {
+    heroCounterObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      heroCounterObserver.disconnect();
+      begin();
+    }, { threshold: 0.25 });
+    heroCounterObserver.observe(grid);
+  } catch (error) {
+    console.warn("Hero stat animation is unavailable; showing final values.", error);
+    heroCountersStarted = true;
+    setFinalValues();
+  }
+}
 
 function initializeMotion() {
   if (scrollMotionObserver) scrollMotionObserver.disconnect();

@@ -55,7 +55,7 @@ const INITIAL_DATA = {
     },
     {
       id: "s2",
-      number: "3",
+      number: "4",
       label: "Featured projects",
       labelFr: "Projets phares",
     },
