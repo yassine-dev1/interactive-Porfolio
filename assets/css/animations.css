@@ -157,6 +157,20 @@ html.motion-reduced .motion-reveal {
     opacity: 0;
     transition: none;
   }
+
+  .timeline::after {
+    transform: scaleY(1);
+  }
+
+  .timeline-marker {
+    box-shadow: 0 0 16px var(--primary-glow);
+    transition: none;
+  }
+
+  .timeline-marker::after {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 @media print {

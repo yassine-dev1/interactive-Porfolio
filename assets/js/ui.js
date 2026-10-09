@@ -6,6 +6,7 @@ let motionPreferenceListenerAttached = false;
 let sectionNavigationObserver = null;
 let heroCounterObserver = null;
 let heroCountersStarted = false;
+let timelineMarkerObserver = null;
 let readingProgressFrame = 0;
 
 function updateReadingProgress() {
@@ -17,6 +18,14 @@ function updateReadingProgress() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
     bar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+
+    const timeline = document.getElementById("experienceTimeline");
+    if (timeline) {
+      const rect = timeline.getBoundingClientRect();
+      const revealLine = window.innerHeight * 0.78;
+      const timelineProgress = Math.min(1, Math.max(0, (revealLine - rect.top) / rect.height));
+      timeline.style.setProperty("--timeline-progress", String(timelineProgress));
+    }
   });
 }
 
@@ -62,6 +71,36 @@ function initializeProjectCardEffects(card) {
   };
   card.addEventListener("pointerleave", reset, { passive: true });
   card.addEventListener("pointercancel", reset, { passive: true });
+}
+
+function initializeTimelineDrawing() {
+  if (timelineMarkerObserver) timelineMarkerObserver.disconnect();
+  const timeline = document.getElementById("experienceTimeline");
+  if (!timeline) return;
+
+  const markers = [...timeline.querySelectorAll(".timeline-marker")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reducedMotion) {
+    timeline.style.setProperty("--timeline-progress", "1");
+    markers.forEach((marker) => marker.classList.add("is-lit"));
+    return;
+  }
+
+  markers.forEach((marker) => marker.classList.remove("is-lit"));
+  updateReadingProgress();
+  try {
+    timelineMarkerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-lit");
+        timelineMarkerObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -30% 0px", threshold: 0 });
+    markers.forEach((marker) => timelineMarkerObserver.observe(marker));
+  } catch (error) {
+    console.warn("Timeline marker observation is unavailable.", error);
+    markers.forEach((marker) => marker.classList.add("is-lit"));
+  }
 }
 
 function animateHeroStatCounters(grid) {
@@ -167,6 +206,7 @@ function initializeMotion() {
       element.classList.add("is-visible");
       element.style.removeProperty("--motion-delay");
     });
+    initializeTimelineDrawing();
     return;
   }
 
@@ -182,6 +222,7 @@ function initializeMotion() {
   );
 
   targets.forEach((element) => scrollMotionObserver.observe(element));
+  initializeTimelineDrawing();
 }
 
 function initializeSectionNavigation() {
