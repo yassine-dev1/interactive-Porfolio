@@ -94,6 +94,15 @@ const INITIAL_DATA = {
       titleFr: "Microservices & SOA",
       targetSection: "#experience",
     },
+    {
+      id: "b4",
+      icon: "workflow",
+      category: "Infrastructure",
+      categoryFr: "Infrastructure",
+      title: "Containerization & Deployment",
+      titleFr: "Conteneurisation & déploiement",
+      targetSection: "#skills",
+    },
   ],
   professionalSummary: [
     {
