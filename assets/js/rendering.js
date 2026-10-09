@@ -388,14 +388,22 @@ function renderProjects() {
   list.forEach((p) => {
     const card = document.createElement("div");
     card.className = "project-card";
+    const projectName = isFr && p.nameFr ? p.nameFr : p.name;
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", projectName);
     card.onclick = () => openProjectModal(p);
+    card.onkeydown = (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openProjectModal(p);
+    };
 
     let tagsHtml = "";
     (p.technologies || []).forEach((t) => {
       tagsHtml += `<span class="project-tag">${t}</span>`;
     });
 
-    const projectName = isFr && p.nameFr ? p.nameFr : p.name;
     const bannerMarkup = p.imageUrl
       ? `
           <div class="project-header-banner has-custom-image">
@@ -424,6 +432,7 @@ function renderProjects() {
           </div>
         `;
     grid.appendChild(card);
+    initializeProjectCardEffects(card);
   });
 }
 

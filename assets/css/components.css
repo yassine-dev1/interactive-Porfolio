@@ -300,6 +300,8 @@ html[dir="rtl"] .skill-badge {
   }
 }
 .project-card {
+  position: relative;
+  isolation: isolate;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-xl);
@@ -309,10 +311,44 @@ html[dir="rtl"] .skill-badge {
   transition: all var(--transition-normal);
   cursor: pointer;
 }
+.project-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    480px circle at var(--mx, 50%) var(--my, 50%),
+    var(--primary-glow),
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+.project-card:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
+}
 .project-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card.is-pointer-active {
+    will-change: transform;
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg))
+      rotateY(var(--tilt-y, 0deg)) translateY(-3px);
+    transition:
+      transform 80ms linear,
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal);
+  }
+
+  .project-card.is-pointer-active::before {
+    opacity: 1;
+  }
 }
 .project-header-banner {
   height: auto;

@@ -23,6 +23,47 @@ function updateReadingProgress() {
 window.addEventListener("scroll", updateReadingProgress, { passive: true });
 window.addEventListener("resize", updateReadingProgress, { passive: true });
 
+function initializeProjectCardEffects(card) {
+  if (!window.matchMedia(
+    "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+  ).matches) return;
+
+  let frame = 0;
+  let pointerX = 0;
+  let pointerY = 0;
+
+  const update = () => {
+    frame = 0;
+    const rect = card.getBoundingClientRect();
+    const x = Math.min(1, Math.max(0, (pointerX - rect.left) / rect.width));
+    const y = Math.min(1, Math.max(0, (pointerY - rect.top) / rect.height));
+    card.style.setProperty("--mx", `${x * rect.width}px`);
+    card.style.setProperty("--my", `${y * rect.height}px`);
+    card.style.setProperty("--tilt-x", `${(0.5 - y) * 8}deg`);
+    card.style.setProperty("--tilt-y", `${(x - 0.5) * 8}deg`);
+  };
+
+  card.addEventListener("pointerenter", (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    card.classList.add("is-pointer-active");
+  }, { passive: true });
+  card.addEventListener("pointermove", (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    if (!frame) frame = window.requestAnimationFrame(update);
+  }, { passive: true });
+  const reset = () => {
+    if (frame) window.cancelAnimationFrame(frame);
+    frame = 0;
+    card.classList.remove("is-pointer-active");
+    card.style.setProperty("--tilt-x", "0deg");
+    card.style.setProperty("--tilt-y", "0deg");
+  };
+  card.addEventListener("pointerleave", reset, { passive: true });
+  card.addEventListener("pointercancel", reset, { passive: true });
+}
+
 function animateHeroStatCounters(grid) {
   const numbers = [...grid.querySelectorAll(".stat-number[data-count]")];
   const setFinalValues = () => {

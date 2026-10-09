@@ -146,6 +146,17 @@ html.motion-reduced .motion-reveal {
   .skill-card:hover {
     transform: none;
   }
+
+  .project-card:hover,
+  .project-card.is-pointer-active {
+    transform: none;
+    will-change: auto;
+  }
+
+  .project-card::before {
+    opacity: 0;
+    transition: none;
+  }
 }
 
 @media print {
