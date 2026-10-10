@@ -13,7 +13,7 @@ function renderAll() {
   const displayTitle =
     isFr && p.professionalTitleFr
       ? p.professionalTitleFr
-      : p.professionalTitle || "AI Automation Specialist & Systems Developer";
+      : p.professionalTitle || "Élève ingénieur logiciel";
 
   document.getElementById("navBrandName").textContent = "Yassine EL JARJINI";
   document.getElementById("footerBrandName").textContent = displayName;
@@ -344,7 +344,7 @@ function renderCategorizedSkills() {
       const chip = document.createElement("li");
       chip.className = "skill-chip";
       chip.style.setProperty("--chip-index", skillIndex);
-      chip.title = description || "";
+      if (description) chip.title = description;
 
       const name = document.createElement("span");
       name.className = "skill-chip-name";

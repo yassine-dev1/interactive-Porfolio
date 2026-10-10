@@ -62,7 +62,7 @@
   <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body>
-  <a class="skip-link" href="#main" data-i18n="skip_to_content">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="skip_to_content">Aller au contenu</a>
   <div class="ambient-glow">
     <div class="ambient-blob-1"></div>
     <div class="ambient-blob-2"></div>
@@ -81,12 +81,12 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Home</a></li>
-          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
-          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
-          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
-          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Experience</a></li>
-          <li><a href="#education" class="nav-link" data-i18n="nav_education">Credentials</a></li>
+          <li><a href="#hero" class="nav-link active" data-i18n="nav_home">Accueil</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">À propos</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Compétences</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projets</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Expérience</a></li>
+          <li><a href="#education" class="nav-link" data-i18n="nav_education">Formation</a></li>
           <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
@@ -96,7 +96,7 @@
         <div class="cv-dropdown" id="cvDropdown">
 <button type="button" class="btn btn-glass btn-sm" id="topCvDownloadBtn" onclick="toggleCvMenu(event)" aria-haspopup="true" aria-expanded="false" title="CV (PDF)">
 <i data-lucide="file-text" class="u-icon-16"></i>
-<span class="cv-text-long" data-i18n="nav_download_cv">Official CV</span>
+<span class="cv-text-long" data-i18n="nav_download_cv">CV officiel</span>
 <span class="cv-text-short u-hidden">CV</span>
 <i data-lucide="chevron-down" class="u-icon-14"></i>
 </button>
@@ -107,23 +107,23 @@
 </div>
 
         <!-- Language toggle -->
-        <button id="langToggleBtn" class="btn btn-glass btn-sm" onclick="toggleLanguage()" title="Switch Language">
+        <button id="langToggleBtn" class="btn btn-glass btn-sm" onclick="toggleLanguage()" title="Changer de langue">
           <i data-lucide="globe" class="u-icon-16"></i>
           <span id="langBtnText">English</span>
         </button>
 
         <!-- Theme toggle -->
-        <button id="themeToggleBtn" class="btn btn-glass btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <button id="themeToggleBtn" class="btn btn-glass btn-icon" onclick="toggleTheme()" title="Changer le thème">
           <i data-lucide="moon" id="themeIcon" class="u-icon-18"></i>
         </button>
 
         <button type="button" class="btn btn-glass btn-sm palette-trigger" id="commandPaletteOpen"
-          aria-haspopup="dialog" aria-expanded="false" aria-label="Open command palette">
+          aria-haspopup="dialog" aria-expanded="false" aria-label="Ouvrir la palette de commandes">
           <kbd>Ctrl K</kbd>
         </button>
 
         <a href="#contact" class="btn btn-primary btn-sm btn-get-in-touch">
-          <span data-i18n="btn_get_in_touch">Get in Touch</span>
+          <span data-i18n="btn_get_in_touch">Me contacter</span>
           <i data-lucide="arrow-right" class="u-icon-16"></i>
         </a>
 
@@ -134,16 +134,16 @@
     </div>
 
     <div class="mobile-drawer" id="mobileDrawer">
-      <a href="#hero" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_home">Home</a>
-      <a href="#about" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_about">About</a>
-      <a href="#skills" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_skills">Skills</a>
-      <a href="#projects" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_projects">Projects</a>
-      <a href="#experience" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_experience">Experience</a>
-      <a href="#education" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_education">Credentials</a>
+      <a href="#hero" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_home">Accueil</a>
+      <a href="#about" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_about">À propos</a>
+      <a href="#skills" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_skills">Compétences</a>
+      <a href="#projects" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_projects">Projets</a>
+      <a href="#experience" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_experience">Expérience</a>
+      <a href="#education" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_education">Formation</a>
       <a href="#contact" class="nav-link" onclick="closeMobileMenu()" data-i18n="nav_contact">Contact</a>
       <div class="mobile-drawer-actions">
         <a href="#contact" class="btn btn-primary u-justify-center" onclick="closeMobileMenu()">
-          <span data-i18n="btn_get_in_touch">Get in Touch</span>
+          <span data-i18n="btn_get_in_touch">Me contacter</span>
           <i data-lucide="arrow-right" class="u-icon-16"></i>
         </a>
       </div>
@@ -158,30 +158,30 @@
         <div class="hero-content">
           <div class="hero-badge-pill">
             <span class="pulse-dot"></span>
-            <span id="heroAvailabilityPill">Available for High-Impact Projects & Roles</span>
+            <span id="heroAvailabilityPill">Disponible pour un stage PFE · À partir de janvier 2027</span>
           </div>
 
-          <h1 class="hero-title">
-            <span data-i18n="hero_greeting" id="heroGreetingText">Hi, I'm</span> <span class="text-gradient" id="heroFullName">Yassine EL JARJINI</span>
+          <h1 class="hero-title" aria-label="Bonjour, je suis Yassine EL JARJINI">
+            <span data-i18n="hero_greeting" id="heroGreetingText">Bonjour, je suis</span> <span class="text-gradient" id="heroFullName">Yassine EL JARJINI</span>
           </h1>
 
-          <p class="hero-headline" id="heroHeadline">
-            AI Automation Specialist & Systems Developer
+          <p class="hero-headline" id="heroHeadline" aria-label="Stage PFE Full-Stack · janvier 2027">
+            Stage PFE Full-Stack · janvier 2027
           </p>
 
-          <p class="hero-intro" id="heroIntro">
-            Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM.
+          <p class="hero-intro" id="heroIntro" aria-label="Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.">
+            Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM. Curieux des agents IA et de l'automatisation avec n8n, je développe ces compétences en complément de mon profil Full-Stack.
           </p>
 
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">
-              <span data-i18n="hero_explore_btn">Explore Projects</span>
+              <span data-i18n="hero_explore_btn">Voir les projets</span>
               <i data-lucide="sparkles" class="u-icon-18"></i>
             </a>
 
             <a id="heroDownloadCv" class="btn btn-glass" download>
               <i data-lucide="download" class="u-icon-18"></i>
-              <span data-i18n="hero_download_cv_btn">Download my CV</span>
+              <span data-i18n="hero_download_cv_btn">Télécharger le CV</span>
             </a>
           </div>
 
@@ -192,7 +192,7 @@
             <a href="https://github.com/yassine-dev1" id="heroSocialGithub" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
             </a>
-            <a href="mailto:eljarjiniyassine1@gmail.com" id="heroSocialEmail" class="social-icon-btn" title="Email Direct">
+            <a href="mailto:eljarjiniyassine1@gmail.com" id="heroSocialEmail" class="social-icon-btn" title="Email direct">
               <i data-lucide="mail" class="u-icon-18"></i>
             </a>
           </div>
@@ -200,24 +200,30 @@
 
         <!-- HERO VISUAL PORTRAIT (THE BELOVED CAMERA CARD WITH STATS & SAFE FLOATING BADGES) -->
         <div class="hero-visual-wrap" id="heroVisualWrap">
-          <!-- Floating Badges dynamically inserted with SAFE classes -->
-          <div id="heroFloatingBadgesContainer"></div>
+          <div id="heroFloatingBadgesContainer">
+            <a class="floating-badge badge-pos-0" href="#skills"><i data-lucide="layers" class="u-render-1"></i><div><div class="badge-cat">Domaine</div><div class="badge-title">Full-Stack Web &amp; Mobile</div></div><i data-lucide="arrow-up-right" class="badge-arrow"></i></a>
+            <a class="floating-badge badge-pos-1" href="#projects"><i data-lucide="bot" class="u-render-1"></i><div><div class="badge-cat">Axe</div><div class="badge-title">LLM / RAG &amp; Agents IA</div></div><i data-lucide="arrow-up-right" class="badge-arrow"></i></a>
+            <a class="floating-badge badge-pos-2" href="#experience"><i data-lucide="server" class="u-render-1"></i><div><div class="badge-cat">Architecture</div><div class="badge-title">Microservices &amp; SOA</div></div><i data-lucide="arrow-up-right" class="badge-arrow"></i></a>
+            <a class="floating-badge badge-pos-3" href="#skills"><i data-lucide="workflow" class="u-render-1"></i><div><div class="badge-cat">Infrastructure</div><div class="badge-title">Conteneurisation &amp; déploiement</div></div><i data-lucide="arrow-up-right" class="badge-arrow"></i></a>
+          </div>
 
           <div class="hero-main-card">
             <div class="hero-avatar-frame">
               <img src="profile.jpg" alt="Yassine EL JARJINI" id="heroAvatarCardImg" width="320" height="320" fetchpriority="high">
-              <span class="hero-online-status" title="Active & Ready"></span>
+              <span class="hero-online-status" title="Disponible"></span>
             </div>
 
             <h3 class="card-hero-name" id="cardHeroName">Yassine EL JARJINI</h3>
-            <p class="card-hero-title" id="cardHeroTitle">AI Automation Specialist & Systems Developer</p>
+            <p class="card-hero-title" id="cardHeroTitle">Élève ingénieur logiciel</p>
             <div class="card-location">
               <i data-lucide="map-pin" class="u-icon-14"></i>
               <span id="cardHeroLocation">Casablanca, Maroc</span>
             </div>
 
             <div class="hero-stats-grid" id="cardHeroStatsGrid">
-              <!-- 3 stat pills inside the camera card -->
+              <div class="stat-pill"><div class="stat-number" aria-label="2" data-count="2">2</div><div class="stat-label">Stages réalisés</div></div>
+              <div class="stat-pill"><div class="stat-number" aria-label="4" data-count="4">4</div><div class="stat-label">Projets phares</div></div>
+              <div class="stat-pill"><div class="stat-number" aria-label="3" data-count="3">3</div><div class="stat-label">Certifications</div></div>
             </div>
           </div>
         </div>
@@ -228,19 +234,19 @@
     <section id="about" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="user" class="u-icon-14"></i> <span data-i18n="about_eyebrow">About Me</span></span>
-          <h2 class="section-heading"><span data-i18n="about_heading_1">Engineering Mindset Applied to</span> <span class="text-gradient" data-i18n="about_heading_2">Intelligent Automation</span></h2>
-          <p class="section-subheading" data-i18n="about_subheading">A synthesis of software orchestration, AI models, and biomedical precision.</p>
+          <span class="section-eyebrow"><i data-lucide="user" class="u-icon-14"></i> <span data-i18n="about_eyebrow">À propos</span></span>
+          <h2 class="section-heading"><span data-i18n="about_heading_1">Ingénierie Full-Stack appliquée à</span> <span class="text-gradient" data-i18n="about_heading_2">des produits concrets</span></h2>
+          <p class="section-subheading" data-i18n="about_subheading">Développement web et mobile, architectures orientées services et intégration de LLM.</p>
         </div>
 
         <div class="about-grid">
           <div class="about-text">
-            <h3 id="aboutHeadlineText" class="about-headline"></h3>
-            <p id="aboutMeP1"></p>
+            <h3 id="aboutHeadlineText" class="about-headline">Apprendre vite, construire de bout en bout</h3>
+            <p id="aboutMeP1">Étudiant en dernière année du cycle ingénieur Génie Logiciel et Intégration des Systèmes Informatiques à la FST Mohammedia, je me spécialise en développement Full-Stack. J'ai réalisé deux stages : une plateforme orientée services avec Next.js, TypeScript, Stripe et JWT chez SecureValley, et une application de gestion des interventions avec React et Express chez Safarelec. Mes projets personnels couvrent C++/WebAssembly, .NET avec Redis et RAG, et le développement mobile. Curieux des agents IA et de l'automatisation de workflows avec n8n, je me forme à ces domaines (cours Scrimba « Learn AI Agents ») afin d'intégrer des fonctionnalités intelligentes dans des applications concrètes.</p>
             
             <div class="career-vision">
-              <h4 data-i18n="career_vision_label" class="career-vision-title">Career Vision</h4>
-              <p id="careerObjectiveText" class="career-objective"></p>
+              <h4 data-i18n="career_vision_label" class="career-vision-title">Objectif professionnel</h4>
+              <p id="careerObjectiveText" class="career-objective">À la recherche d'un stage de fin d'études (PFE) en développement Full-Stack Web et Mobile : architectures microservices, intégration LLM/IA et agents IA.</p>
             </div>
           </div>
 
@@ -248,12 +254,16 @@
           <div class="key-facts-card">
             <h4 class="summary-heading">
               <i data-lucide="sparkles" class="summary-icon"></i>
-              <span data-i18n="summary_card_title">Professional Summary</span>
+              <span data-i18n="summary_card_title">Résumé professionnel</span>
             </h4>
             
-            <div id="keyFactsList">
-              <!-- 5 synchronized summary items injected here -->
-            </div>
+          <div id="keyFactsList">
+            <div class="fact-item"><div class="fact-icon"><i data-lucide="map-pin"></i></div><div><div class="fact-label">Localisation</div><div class="fact-value">Casablanca, Maroc</div></div></div>
+            <div class="fact-item"><div class="fact-icon"><i data-lucide="graduation-cap"></i></div><div><div class="fact-label">Formation</div><div class="fact-value">FST Mohammedia – Cycle Ingénieur (ILISI)</div></div></div>
+            <div class="fact-item"><div class="fact-icon"><i data-lucide="calendar"></i></div><div><div class="fact-label">Disponibilité</div><div class="fact-value">Stage PFE à partir de janvier 2027</div></div></div>
+            <div class="fact-item"><div class="fact-icon"><i data-lucide="code-2"></i></div><div><div class="fact-label">Domaines</div><div class="fact-value">Full-Stack, microservices, LLM/IA</div></div></div>
+            <div class="fact-item"><div class="fact-icon"><i data-lucide="languages"></i></div><div><div class="fact-label">Langues</div><div class="fact-value">Arabe (natif) · Français B2 · Anglais B1</div></div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -263,13 +273,19 @@
     <section id="skills" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="cpu" class="u-icon-14"></i> <span data-i18n="skills_eyebrow">Technical Mastery</span></span>
-          <h2 class="section-heading"><span data-i18n="skills_heading_1">Categorized Technical</span> <span class="text-gradient" data-i18n="skills_heading_2">Competencies</span></h2>
-          <p class="section-subheading" data-i18n="skills_subheading">Structured across workflow automation, backend AI systems, embedded IoT, and operational optimization.</p>
+          <span class="section-eyebrow"><i data-lucide="cpu" class="u-icon-14"></i> <span data-i18n="skills_eyebrow">Compétences techniques</span></span>
+          <h2 class="section-heading"><span data-i18n="skills_heading_1">Compétences</span> <span class="text-gradient" data-i18n="skills_heading_2">techniques</span></h2>
+          <p class="section-subheading" data-i18n="skills_subheading">Langages, frameworks web et backend, bases de données et outils DevOps.</p>
         </div>
 
         <div class="skills-categories-grid" id="skillsContainer">
-          <!-- 4 Category skill cards injected dynamically with complete descriptions -->
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="code-2" class="skill-card-icon"></i><h3>Langages</h3></header><ul class="skill-chips" aria-label="Langages"><li class="skill-chip"><span class="skill-chip-name">Java (Jakarta EE)</span></li><li class="skill-chip"><span class="skill-chip-name">C / C++</span></li><li class="skill-chip"><span class="skill-chip-name">JavaScript</span></li><li class="skill-chip"><span class="skill-chip-name">TypeScript</span></li><li class="skill-chip"><span class="skill-chip-name">PHP</span></li><li class="skill-chip"><span class="skill-chip-name">Assembly</span></li><li class="skill-chip"><span class="skill-chip-name">Shell</span></li></ul></article>
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="layers" class="skill-card-icon"></i><h3>Backend &amp; Web</h3></header><ul class="skill-chips" aria-label="Backend &amp; Web"><li class="skill-chip"><span class="skill-chip-name">React JS</span></li><li class="skill-chip"><span class="skill-chip-name">React Native</span></li><li class="skill-chip"><span class="skill-chip-name">Next.js</span></li><li class="skill-chip"><span class="skill-chip-name">NestJS</span></li><li class="skill-chip"><span class="skill-chip-name">Express JS</span></li><li class="skill-chip"><span class="skill-chip-name">Spring Boot</span></li><li class="skill-chip"><span class="skill-chip-name">Tailwind CSS</span></li><li class="skill-chip"><span class="skill-chip-name">REST API</span></li><li class="skill-chip"><span class="skill-chip-name">Microservices</span></li></ul></article>
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="bot" class="skill-card-icon"></i><h3>Intelligence Artificielle</h3></header><ul class="skill-chips" aria-label="Intelligence Artificielle"><li class="skill-chip" title="Assistant conversationnel basé sur un LLM (ShopApp) ; génération de texte avec l'API Gemini."><span class="skill-chip-name">LLM</span><span class="u-visually-hidden skill-chip-description">Assistant conversationnel basé sur un LLM (ShopApp) ; génération de texte avec l'API Gemini.</span></li><li class="skill-chip" title="Retrieval-Augmented Generation sur un catalogue produit pour des réponses fiables."><span class="skill-chip-name">RAG</span><span class="u-visually-hidden skill-chip-description">Retrieval-Augmented Generation sur un catalogue produit pour des réponses fiables.</span></li><li class="skill-chip" title="Cours Scrimba « Learn AI Agents » (août 2026)."><span class="skill-chip-name">AI Agents</span><span class="skill-badge">Initié</span><span class="u-visually-hidden skill-chip-description">Cours Scrimba « Learn AI Agents » (août 2026).</span></li><li class="skill-chip"><span class="skill-chip-name">n8n</span><span class="skill-badge">Initié</span></li></ul></article>
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="database" class="skill-card-icon"></i><h3>Bases de données &amp; Data</h3></header><ul class="skill-chips" aria-label="Bases de données &amp; Data"><li class="skill-chip"><span class="skill-chip-name">PostgreSQL</span></li><li class="skill-chip"><span class="skill-chip-name">MySQL</span></li><li class="skill-chip"><span class="skill-chip-name">SQL Server</span></li><li class="skill-chip"><span class="skill-chip-name">Redis</span></li><li class="skill-chip"><span class="skill-chip-name">Hibernete</span></li><li class="skill-chip"><span class="skill-chip-name">Prisma ORM</span></li><li class="skill-chip"><span class="skill-chip-name">Power BI</span></li></ul></article>
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="wrench" class="skill-card-icon"></i><h3>DevOps &amp; Outils</h3></header><ul class="skill-chips" aria-label="DevOps &amp; Outils"><li class="skill-chip"><span class="skill-chip-name">Git / GitHub</span></li><li class="skill-chip"><span class="skill-chip-name">Docker</span></li><li class="skill-chip"><span class="skill-chip-name">Figma</span></li><li class="skill-chip"><span class="skill-chip-name">Jira</span></li></ul></article>
+          <article class="skill-card"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="workflow" class="skill-card-icon"></i><h3>Méthodes &amp; Bonnes pratiques</h3></header><ul class="skill-chips" aria-label="Méthodes &amp; Bonnes pratiques"><li class="skill-chip"><span class="skill-chip-name">Principes SOLID</span></li><li class="skill-chip"><span class="skill-chip-name">Clean Architecture</span></li><li class="skill-chip"><span class="skill-chip-name">Design Patterns</span></li><li class="skill-chip"><span class="skill-chip-name">Agile / Scrum</span></li></ul></article>
+          <article class="skill-card skill-card--wide"><header class="skill-card-header"><span class="skill-category-dot" aria-hidden="true"></span><i data-lucide="brain" class="skill-card-icon"></i><h3>Soft Skills</h3></header><ul class="skill-chips" aria-label="Soft Skills"><li class="skill-chip"><span class="skill-chip-name">Résolution analytique de problèmes</span></li><li class="skill-chip"><span class="skill-chip-name">Apprentissage rapide des technologies</span></li><li class="skill-chip"><span class="skill-chip-name">Gestion du temps et priorisation</span></li></ul></article>
         </div>
       </div>
     </section>
@@ -277,13 +293,15 @@
     <section id="projects" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="folder-git-2" class="u-icon-14"></i> <span data-i18n="projects_eyebrow">Engineering Portfolio</span></span>
-          <h2 class="section-heading"><span data-i18n="projects_heading_1">Featured Systems &</span> <span class="text-gradient" data-i18n="projects_heading_2">Automations</span></h2>
-          <p class="section-subheading" data-i18n="projects_subheading">Real-world production automations, health-tech hardware prototypes, and interactive cloud applications.</p>
+          <span class="section-eyebrow"><i data-lucide="folder-git-2" class="u-icon-14"></i> <span data-i18n="projects_eyebrow">Réalisations</span></span>
+          <h2 class="section-heading"><span data-i18n="projects_heading_1">Projets</span> <span class="text-gradient" data-i18n="projects_heading_2">phares</span></h2>
+          <p class="section-subheading" data-i18n="projects_subheading">Projets académiques, personnels et de stage : web, mobile, IA et algorithmique.</p>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
-          <!-- Project cards injected dynamically -->
+          <div class="project-card" role="button" tabindex="0" aria-label="Plateforme E-Commerce Intelligente"><div class="project-header-banner has-custom-image"><img class="project-card-image" src="assets/images/projects/ecommerce-ai.webp" alt="Plateforme E-Commerce Intelligente" width="1200" height="675" loading="lazy" decoding="async"></div><div class="project-card-body"><div class="project-category">Backend · IA</div><h3 class="project-title">Plateforme E-Commerce Intelligente</h3><p class="project-desc">Backend .NET 8 avec panier distribué via Redis et assistant client basé sur un LLM et le pattern RAG, répondant à partir du catalogue produit.</p><div class="project-tags"><span class="project-tag">.NET 8</span><span class="project-tag">SQL Server</span><span class="project-tag">Redis</span><span class="project-tag">LLM</span><span class="project-tag">RAG</span></div><div class="project-footer"><span>Panier distribué · Assistant RAG</span><span>Voir <i data-lucide="arrow-right"></i></span></div></div></div>
+          <div class="project-card" role="button" tabindex="0" aria-label="Pathfinding Visualizer Engine"><div class="project-header-banner has-custom-image"><img class="project-card-image" src="assets/images/projects/pathfinding.webp" alt="Pathfinding Visualizer Engine" width="1200" height="675" loading="lazy" decoding="async"></div><div class="project-card-body"><div class="project-category">Algorithmique · Performance</div><h3 class="project-title">Pathfinding Visualizer Engine</h3><p class="project-desc">Moteur de calcul de chemins en C++ compilé en WebAssembly, avec interface React pour visualiser et comparer les algorithmes.</p><div class="project-tags"><span class="project-tag">C++</span><span class="project-tag">WebAssembly</span><span class="project-tag">React</span><span class="project-tag">Dijkstra</span><span class="project-tag">A*</span><span class="project-tag">BFS</span></div><div class="project-footer"><span>A*, Dijkstra, BFS sur grilles de 800 nœuds</span><span>Voir <i data-lucide="arrow-right"></i></span></div></div></div>
+          <div class="project-card" role="button" tabindex="0" aria-label="Système Expert d'Orientation Académique"><div class="project-header-banner has-custom-image"><img class="project-card-image" src="assets/images/projects/academic-orientation.webp" alt="Système Expert d'Orientation Académique" width="1200" height="675" loading="lazy" decoding="async"></div><div class="project-card-body"><div class="project-category">IA · Python</div><h3 class="project-title">Système Expert d'Orientation Académique</h3><p class="project-desc">Système expert recommandant des filières à partir du profil et des aspirations de l'étudiant, avec lettres de motivation générées par l'API Gemini.</p><div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">CustomTkinter</span><span class="project-tag">Inference engine</span><span class="project-tag">RIASEC</span><span class="project-tag">Gemini API</span></div><div class="project-footer"><span>Chaînage avant + RIASEC</span><span>Voir <i data-lucide="arrow-right"></i></span></div></div></div>
         </div>
       </div>
     </section>
@@ -292,13 +310,14 @@
     <section id="experience" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="briefcase" class="u-icon-14"></i> <span data-i18n="exp_eyebrow">Work History</span></span>
-          <h2 class="section-heading"><span data-i18n="exp_heading_1">Professional Experience &</span> <span class="text-gradient" data-i18n="exp_heading_2">Fellowships</span></h2>
-          <p class="section-subheading" data-i18n="exp_subheading">Practical track record in enterprise process automation and system deployment.</p>
+          <span class="section-eyebrow"><i data-lucide="briefcase" class="u-icon-14"></i> <span data-i18n="exp_eyebrow">Parcours</span></span>
+          <h2 class="section-heading"><span data-i18n="exp_heading_1">Expérience</span> <span class="text-gradient" data-i18n="exp_heading_2">professionnelle</span></h2>
+          <p class="section-subheading" data-i18n="exp_subheading">Deux stages en développement web et Full-Stack.</p>
         </div>
 
         <div class="timeline" id="experienceTimeline">
-          <!-- Experience items injected dynamically -->
+          <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-card"><span>Avril 2026 - Juin 2026</span><h3>Stagiaire Développeur Full-Stack</h3><div>SecureValley (Stage · Témara, Maroc)</div><p>Développement d'une plateforme SOA (Architecture Orientée Services) de 3 applications Next.js/TypeScript : vitrine institutionnelle, boutique e-commerce Stripe et application d'évaluation, avec une architecture microservices sécurisée par JWT et une persistance via Prisma ORM.</p></div></div>
+          <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-card"><span>Avril 2025 - Juin 2025</span><h3>Stagiaire Développeur Web</h3><div>Safarelec (Stage · El Jadida, Maroc)</div><p>Conception d'une application de gestion des interventions avec React.js/Express.js, optimisant le suivi des flux import/export pour l'équipe opérationnelle.</p></div></div>
         </div>
       </div>
     </section>
@@ -307,23 +326,25 @@
     <section id="education" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="graduation-cap" class="u-icon-14"></i> <span data-i18n="edu_eyebrow">Academic Foundation</span></span>
-          <h2 class="section-heading"><span data-i18n="edu_heading_1">Education &</span> <span class="text-gradient" data-i18n="edu_heading_2">Certifications</span></h2>
-          <p class="section-subheading" data-i18n="edu_subheading">Rigorous medical-technical foundation coupled with continuous technology upskilling.</p>
+          <span class="section-eyebrow"><i data-lucide="graduation-cap" class="u-icon-14"></i> <span data-i18n="edu_eyebrow">Parcours académique</span></span>
+          <h2 class="section-heading"><span data-i18n="edu_heading_1">Formation &</span> <span class="text-gradient" data-i18n="edu_heading_2">Certifications</span></h2>
+          <p class="section-subheading" data-i18n="edu_subheading">Cycle ingénieur en cours, complété par une montée en compétences continue.</p>
         </div>
 
         <div class="edu-cert-grid">
           <div id="educationMainCard">
-            <!-- Education degree card -->
+            <div class="key-facts-card education-card"><span class="project-category">Diplôme</span><h3>Cycle Ingénieur – Génie Logiciel et Intégration des Systèmes Informatiques</h3><p>Faculté des Sciences et Techniques de Mohammedia (FST)</p><div>Dernière année • 2024 – Présent</div><p>Auparavant : Licence Fondamentale en Sciences Mathématiques et Informatiques (Bases de données), Faculté des Sciences Ain Chok, Casablanca, 2021–2024.</p></div>
           </div>
 
           <div>
             <h3 class="section-subheading-title">
               <i data-lucide="award" class="cert-icon-glyph"></i>
-              <span data-i18n="cert_heading">Specialized Certifications</span>
+              <span data-i18n="cert_heading">Certifications</span>
             </h3>
             <div id="certificationsList">
-              <!-- Cert cards -->
+              <a class="cert-card" href="certifications/Scrimba_Learn_Next_js.pdf" download="Scrimba_Learn_Next_js.pdf" title="Télécharger le certificat (PDF)"><div class="cert-icon"><i data-lucide="award"></i></div><div><h4>Learn Next.js</h4><p>Scrimba • Août 2026</p></div><i data-lucide="download" class="cert-dl"></i></a>
+              <a class="cert-card" href="certifications/Scrimba_Learn_AI_Agents.pdf" download="Scrimba_Learn_AI_Agents.pdf" title="Télécharger le certificat (PDF)"><div class="cert-icon"><i data-lucide="award"></i></div><div><h4>Learn AI Agents</h4><p>Scrimba • Août 2026</p></div><i data-lucide="download" class="cert-dl"></i></a>
+              <a class="cert-card" href="certifications/Cisco_CCNA_Introduction_to_Networks.pdf" download="Cisco_CCNA_Introduction_to_Networks.pdf" title="Télécharger le certificat (PDF)"><div class="cert-icon"><i data-lucide="award"></i></div><div><h4>CCNA: Introduction to Networks</h4><p>Cisco Networking Academy · Hassan II Mohammedia University • Janvier 2025</p></div><i data-lucide="download" class="cert-dl"></i></a>
             </div>
 
           </div>
@@ -335,15 +356,15 @@
     <section id="contact" class="page-section section-border-top">
       <div class="container">
         <div class="section-title-wrap">
-          <span class="section-eyebrow"><i data-lucide="send" class="u-icon-14"></i> <span data-i18n="contact_eyebrow">Direct Outreach</span></span>
-          <h2 class="section-heading"><span data-i18n="contact_heading_1">Let's Discuss Your</span> <span class="text-gradient" data-i18n="contact_heading_2">Next Automation</span></h2>
-          <p class="section-subheading" data-i18n="contact_subheading">Ready to streamline your business pipelines or collaborate on innovative systems.</p>
+          <span class="section-eyebrow"><i data-lucide="send" class="u-icon-14"></i> <span data-i18n="contact_eyebrow">Contact</span></span>
+          <h2 class="section-heading"><span data-i18n="contact_heading_1">Parlons de votre</span> <span class="text-gradient" data-i18n="contact_heading_2">offre de stage PFE</span></h2>
+          <p class="section-subheading" data-i18n="contact_subheading">Disponible pour un stage PFE en développement Full-Stack Web et Mobile à partir de janvier 2027.</p>
         </div>
 
         <div class="contact-grid">
           <div>
-            <h3 data-i18n="contact_channel_title" class="contact-heading">Direct Channels</h3>
-            <p data-i18n="contact_channel_desc" class="contact-description">Reach me on LinkedIn, email or phone.</p>
+            <h3 data-i18n="contact_channel_title" class="contact-heading">Coordonnées</h3>
+            <p data-i18n="contact_channel_desc" class="contact-description">Contactez-moi sur LinkedIn, par email ou par téléphone.</p>
 
             <a href="https://www.linkedin.com/in/el-jarjini-yassine/" target="_blank" rel="noopener noreferrer" class="contact-method-card" id="contactLinkedinCard">
               <div class="contact-icon-box contact-icon-box--linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
@@ -362,7 +383,7 @@
                 <i data-lucide="phone" class="contact-phone-icon" aria-hidden="true"></i>
               </div>
               <div>
-                <div class="fact-label" data-i18n="contact_phone_label">Phone</div>
+                <div class="fact-label" data-i18n="contact_phone_label">Téléphone</div>
                 <div class="fact-value" id="contactPhoneText">+212 6 44 84 74 68</div>
               </div>
             </a>
@@ -372,7 +393,7 @@
                 <i data-lucide="mail"></i>
               </div>
               <div>
-                <div class="fact-label" data-i18n="contact_email_label">Email Address</div>
+                <div class="fact-label" data-i18n="contact_email_label">Adresse email</div>
                 <div class="fact-value" id="contactEmailText">eljarjiniyassine1@gmail.com</div>
               </div>
             </a>
@@ -382,7 +403,7 @@
                 <i data-lucide="map-pin"></i>
               </div>
               <div>
-                <div class="fact-label" data-i18n="contact_location_label">Location</div>
+                <div class="fact-label" data-i18n="contact_location_label">Localisation</div>
                 <div class="fact-value" id="contactLocationText">Casablanca, Maroc</div>
               </div>
             </div>
@@ -390,35 +411,50 @@
 
           <!-- Contact Form -->
           <div class="key-facts-card">
-            <h4 data-i18n="form_title" class="contact-form-heading">Send a Direct Message</h4>
-            <p class="contact-description form-delivery-note" data-i18n="form_delivery_note">This form opens your email app; it does not send messages from the site.</p>
+            <h4 data-i18n="form_title" class="contact-form-heading">Envoyer un message</h4>
+            <p class="contact-description form-delivery-note" data-i18n="form_delivery_note">Ce formulaire ouvre votre application de messagerie ; aucun message n'est envoyé depuis le site.</p>
             <form onsubmit="handleContactSubmit(event)">
               <div class="form-group">
-                <label for="contactName" class="form-label" data-i18n="form_name">Your Name</label>
-                <input id="contactName" name="name" type="text" class="form-input" required data-i18n-placeholder="form_name_placeholder" placeholder="Your full name">
+                <label for="contactName" class="form-label" data-i18n="form_name">Votre nom</label>
+                <input id="contactName" name="name" type="text" class="form-input" required data-i18n-placeholder="form_name_placeholder" placeholder="Votre nom complet">
               </div>
               <div class="form-group">
-                <label for="contactEmail" class="form-label" data-i18n="form_email">Your Email</label>
-                <input id="contactEmail" name="email" type="email" class="form-input" required data-i18n-placeholder="form_email_placeholder" placeholder="you@example.com">
+                <label for="contactEmail" class="form-label" data-i18n="form_email">Votre email</label>
+                <input id="contactEmail" name="email" type="email" class="form-input" required data-i18n-placeholder="form_email_placeholder" placeholder="vous@exemple.com">
               </div>
               <div class="form-group">
-                <label for="contactMessage" class="form-label" data-i18n="form_msg">Project Overview / Inquiry</label>
-                <textarea id="contactMessage" name="message" class="form-textarea" rows="4" required data-i18n-placeholder="form_message_placeholder" placeholder="Tell me about your internship offer or project..."></textarea>
+                <label for="contactMessage" class="form-label" data-i18n="form_msg">Votre message</label>
+                <textarea id="contactMessage" name="message" class="form-textarea" rows="4" required data-i18n-placeholder="form_message_placeholder" placeholder="Parlez-moi de votre offre de stage ou de votre projet…"></textarea>
               </div>
               <button type="submit" class="btn btn-primary form-submit">
-                <span data-i18n="form_send">Prepare email</span>
+                <span data-i18n="form_send">Préparer un email</span>
                 <i data-lucide="send" class="u-icon-16"></i>
               </button>
             </form>
             <p id="contactSubmitStatus" class="contact-submit-status" aria-live="polite" hidden>
-              <span data-i18n="form_mailto_status"></span>
-              <a id="contactStatusEmail" href="mailto:eljarjiniyassine1@gmail.com"></a>
-              <button type="button" id="copyContactEmail" class="btn btn-glass btn-sm" onclick="copyContactEmail()" data-i18n="form_copy_email">Copy email</button>
+              <span data-i18n="form_mailto_status">Votre application de messagerie va s'ouvrir. Sinon, écrivez-moi à</span>
+              <a id="contactStatusEmail" href="mailto:eljarjiniyassine1@gmail.com">eljarjiniyassine1@gmail.com</a>
+              <button type="button" id="copyContactEmail" class="btn btn-glass btn-sm" onclick="copyContactEmail()" data-i18n="form_copy_email">Copier l'email</button>
             </p>
           </div>
         </div>
       </div>
     </section>
+    <noscript>
+      <section class="noscript-panel" aria-label="Contact">
+        <h2>Yassine EL JARJINI</h2>
+        <p><strong>Élève ingénieur logiciel</strong></p>
+        <p>Étudiant en dernière année du cycle ingénieur à la FST Mohammedia, je conçois des applications web et mobile Full-Stack, des architectures orientées services et des fonctionnalités basées sur les LLM.</p>
+        <p lang="en">Final-year software engineering student at FST Mohammedia, building full-stack web and mobile applications, service-oriented architectures and LLM-powered features.</p>
+        <ul>
+          <li><a href="mailto:eljarjiniyassine1@gmail.com">Email : eljarjiniyassine1@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/el-jarjini-yassine/" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/yassine-dev1" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="resumes/Resume_Yassine_Eljarjini_FR.pdf" download>Télécharger le CV en français (PDF)</a></li>
+          <li><a href="resumes/Resume_Yassine_Eljarjini_EN.pdf" download>Download the English CV (PDF)</a></li>
+        </ul>
+      </section>
+    </noscript>
   </main>
 
   <!-- FOOTER -->
@@ -431,14 +467,14 @@
         <a href="https://github.com/yassine-dev1" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
         </a>
-        <a href="mailto:eljarjiniyassine1@gmail.com" class="social-icon-btn" title="Email Direct">
+        <a href="mailto:eljarjiniyassine1@gmail.com" class="social-icon-btn" title="Email direct">
           <i data-lucide="mail" class="u-icon-18"></i>
         </a>
       </div>
       <p class="footer-copy">
-        © 2026 <span id="footerBrandName">Yassine EL JARJINI</span>. <span data-i18n="footer_rights">All rights reserved.</span>
+        © 2026 <span id="footerBrandName">Yassine EL JARJINI</span>. <span data-i18n="footer_rights">Tous droits réservés.</span>
       </p>
-      <span class="footer-hint" data-i18n="palette_hint">Tip: Ctrl+K</span>
+      <span class="footer-hint" data-i18n="palette_hint">Astuce : Ctrl+K</span>
     </div>
   </footer>
 
@@ -448,9 +484,9 @@
       <div class="command-palette__header">
         <h2 id="paletteTitle" data-i18n="palette_title">Commandes rapides</h2>
         <button type="button" class="command-palette__close" id="commandPaletteClose"
-          aria-label="Close"><span class="u-visually-hidden" data-i18n="palette_close">Close</span>×</button>
+          aria-label="Fermer"><span class="u-visually-hidden" data-i18n="palette_close">Fermer</span>×</button>
       </div>
-      <input id="paletteSearch" class="command-palette__search" type="search" role="combobox"
+      <input id="paletteSearch" class="command-palette__search" type="search" role="combobox" aria-label="Commandes rapides"
         aria-autocomplete="list" aria-controls="paletteResults" aria-expanded="true"
         aria-activedescendant="" data-i18n-placeholder="palette_search_placeholder"
         placeholder="Rechercher une commande…">
