@@ -1,6 +1,5 @@
 .vercel
-.firebase
-.firebaserc
+.firebase/
 .DS_Store
 Thumbs.db
 shared/
