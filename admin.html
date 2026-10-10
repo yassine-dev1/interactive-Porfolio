@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Studio d'administration du portfolio | Yassine El Jarjini</title>
   <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- Google Fonts: Outfit, Plus Jakarta Sans, Tajawal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -311,25 +312,6 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     }
 
-    .pin-input {
-      font-family: monospace;
-      font-size: 2rem;
-      letter-spacing: 0.5rem;
-      text-align: center;
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--bg-base);
-      border: 2px solid var(--border-card);
-      border-radius: var(--radius-md);
-      color: var(--accent-cyan);
-      margin: 1.5rem 0;
-      outline: none;
-    }
-
-    .pin-input:focus {
-      border-color: var(--primary);
-    }
-
     /* RESPONSIVE GRIDS FOR ADMIN PREVIEW */
     .admin-stats-grid {
       display: grid;
@@ -470,71 +452,29 @@
 
 <body>
 
-  <!-- PIN Modal -->
+  <!-- Firebase Authentication -->
   <div class="auth-modal" id="adminAuthModal">
-    <div class="auth-box">
+    <form class="auth-box" id="adminLoginForm">
       <div
         style="width: 50px; height: 50px; border-radius: 50%; background: rgba(99,102,241,0.15); color: var(--primary-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
         <i data-lucide="lock" style="width: 24px; height: 24px;"></i>
       </div>
-      <h2>دخول لوحة التحكم المعتمدة</h2>
-      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">أدخل رمز PIN للمتابعة (الافتراضي: 1234)</p>
-      <input type="password" id="adminPinInput" class="pin-input" maxlength="10" placeholder="••••" autofocus
-        onkeypress="if(event.key==='Enter') verifyAdminPin()">
-      <button onclick="verifyAdminPin()" class="btn btn-primary" style="width: 100%; justify-content: center;">
-        <span>تأكيد الرمز والدخول</span>
-        <i data-lucide="key" style="width: 16px; height: 16px;"></i>
+      <h2>Connexion à l'administration</h2>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">Connectez-vous avec le compte administrateur Firebase.</p>
+      <div class="form-group" style="text-align:left; margin-top:1rem;">
+        <label for="adminEmail">Adresse e-mail</label>
+        <input type="email" id="adminEmail" class="form-input" autocomplete="username" required>
+      </div>
+      <div class="form-group" style="text-align:left; margin-top:0.75rem;">
+        <label for="adminPassword">Mot de passe</label>
+        <input type="password" id="adminPassword" class="form-input" autocomplete="current-password" required>
+      </div>
+      <p id="adminAuthError" role="alert" style="color:#ef4444; font-size:0.85rem; margin:0.75rem 0; display:none;"></p>
+      <button type="submit" class="btn btn-primary" id="adminLoginButton" style="width: 100%; justify-content: center; margin-top:0.5rem;">
+        <span>Se connecter</span>
+        <i data-lucide="log-in" style="width: 16px; height: 16px;"></i>
       </button>
-      <p id="pinErrorMsg" style="color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; display: none;">الرمز غير
-        صحيح، حاول مرة أخرى.</p>
-    </div>
-  </div>
-
-  <!-- Settings Modal (Cloud Config & Admin PIN) -->
-  <div class="auth-modal" id="adminSettingsModal" style="display:none; z-index: 10000;">
-    <div class="auth-box" style="max-width: 520px; text-align: right;" dir="rtl">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem;">
-          <i data-lucide="settings" style="width: 20px; height: 20px; color: var(--accent-cyan);"></i>
-          <h3 style="font-size: 1.15rem; font-weight: 700;">إعدادات السحابة وكلمة المرور</h3>
-        </div>
-        <button type="button" onclick="closeCloudSettingsModal()" style="background:none; border:none; color:var(--text-tertiary); cursor:pointer; font-size:1.5rem; line-height:1;">&times;</button>
-      </div>
-
-      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
-        يمكنك تفعيل الحفظ السحابي مجاناً عبر Firebase أو تخصيص رمز PIN للوحة. هذه الإعدادات تحفظ محلياً في متصفحك أو يمكنك كتابتها في <code style="color:var(--accent-cyan);">config.js</code>.
-      </p>
-
-      <div class="form-group" style="margin-bottom: 1rem;">
-        <label style="display:block; font-size:0.85rem; margin-bottom:0.35rem; color:var(--text-primary);">رمز PIN للوحة التحكم:</label>
-        <input type="text" id="cfg_admin_pin" class="form-input" placeholder="الافتراضي: 1234" maxlength="10">
-      </div>
-
-      <div style="border-top:1px solid var(--border-subtle); padding-top:1rem; margin-top:1rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-          <strong style="color:var(--primary-light); font-size:0.9rem;">ربط سحابة Google Firebase (اختياري)</strong>
-          <a href="https://console.firebase.google.com/" target="_blank" style="font-size:0.75rem; color:var(--accent-cyan); text-decoration:none;">إنشاء مشروع مجاني ↗</a>
-        </div>
-        <div class="form-group" style="margin-bottom: 0.75rem;">
-          <label style="display:block; font-size:0.8rem; margin-bottom:0.25rem; color:var(--text-secondary);">Firebase Project ID:</label>
-          <input type="text" id="cfg_fb_project_id" class="form-input" placeholder="مثال: my-portfolio-12345">
-        </div>
-        <div class="form-group" style="margin-bottom: 0.75rem;">
-          <label style="display:block; font-size:0.8rem; margin-bottom:0.25rem; color:var(--text-secondary);">Firebase Web API Key:</label>
-          <input type="text" id="cfg_fb_api_key" class="form-input" placeholder="مثال: AIzaSy...">
-        </div>
-      </div>
-
-      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-        <button onclick="saveCloudSettings()" class="btn btn-primary" style="flex: 1; justify-content: center;">
-          <i data-lucide="check" style="width: 16px; height: 16px;"></i>
-          <span>حفظ وتطبيق الإعدادات</span>
-        </button>
-        <button onclick="closeCloudSettingsModal()" class="btn btn-glass" style="flex: 0.5; justify-content: center;">
-          <span>إلغاء</span>
-        </button>
-      </div>
-    </div>
+    </form>
   </div>
 
   <!-- Admin Sticky Bar -->
@@ -567,13 +507,6 @@
         <span id="lbl_adm_visit">معاينة للزوار</span>
       </a>
 
-      <!-- Cloud & Security Settings -->
-      <button onclick="openCloudSettingsModal()" class="btn btn-glass btn-sm" id="adminCloudConfigBtn"
-        title="إعدادات السحابة وكلمة المرور / Settings">
-        <i data-lucide="settings" style="width: 14px; height: 14px;"></i>
-        <span id="lbl_adm_settings">الإعدادات</span>
-      </button>
-
       <button onclick="saveAllToCloud()" class="btn btn-primary" id="adminSaveCloudBtn">
         <i data-lucide="cloud-upload" style="width: 16px; height: 16px;"></i>
         <span id="lbl_adm_save">حفظ التعديلات سحابياً</span>
@@ -590,6 +523,10 @@
         <span id="lbl_adm_restore">استرجاع</span>
         <input type="file" accept=".json" onchange="handleRestoreFile(event)" style="display: none;">
       </label>
+      <button type="button" class="btn btn-glass btn-sm" id="adminLogoutBtn">
+        <i data-lucide="log-out" style="width:14px;height:14px;"></i>
+        <span>Déconnexion</span>
+      </button>
     </div>
   </header>
 
@@ -1196,27 +1133,14 @@
   ],
   "addedValue": {}
 };
-    const CLOUD_URL = typeof getPortfolioCloudUrl === 'function' ? getPortfolioCloudUrl() : null;
-
     let data = INITIAL_DATA;
     let activeDrawerTab = 'skills';
 
-    try {
-      const cached = localStorage.getItem('portfolio_cache');
-      if (cached) data = JSON.parse(cached);
-    } catch (err) { }
-
-    function verifyAdminPin() {
-      const input = document.getElementById('adminPinInput').value;
-      const expectedPin = typeof getPortfolioAdminPin === 'function' ? getPortfolioAdminPin() : '1234';
-      if (input === expectedPin) {
-        document.getElementById('adminAuthModal').style.display = 'none';
-        sessionStorage.setItem('portfolio_admin_auth', 'true');
-        initAdmin();
-      } else {
-        document.getElementById('pinErrorMsg').style.display = 'block';
-      }
-    }
+    Object.defineProperty(window, 'data', {
+      configurable: true,
+      get: () => data,
+      set: (value) => { data = value; }
+    });
 
     // BILINGUAL SUPPORT FOR ADMIN STUDIO
     let adminLang = localStorage.getItem('admin_lang') || 'fr';
@@ -1322,6 +1246,7 @@
       renderLivePreview();
       openDrawer('skills');
     }
+    window.initAdmin = initAdmin;
 
     function renderLivePreview() {
       // Stats inside Hero Card
@@ -1346,15 +1271,14 @@
         card.style.cssText = 'background:var(--bg-surface-elevated); border:1px solid var(--border-card); border-radius:16px; padding:1.5rem;';
         let skHtml = '';
         (cat.skills || []).forEach(sk => {
+          const hasNumericLevel = typeof sk.level === 'number' && Number.isFinite(sk.level);
           skHtml += `
             <div style="margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
               <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:600;">
                 <span>${sk.name} ${sk.badge ? `<span style="font-size:0.7rem; padding:0.15rem 0.45rem; border-radius:999px; background:rgba(99,102,241,0.2); color:var(--primary-light);">${sk.badge}</span>` : ''}</span>
-                <span>${sk.level}%</span>
+                ${hasNumericLevel ? `<span>${sk.level}%</span>` : ''}
               </div>
-              <div style="width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:999px; margin:0.4rem 0; overflow:hidden;">
-                <div style="width:${sk.level}%; height:100%; background:var(--gradient-accent); border-radius:999px;"></div>
-              </div>
+              ${hasNumericLevel ? `<div style="width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:999px; margin:0.4rem 0; overflow:hidden;"><div style="width:${sk.level}%; height:100%; background:var(--gradient-accent); border-radius:999px;"></div></div>` : ''}
               ${sk.desc ? `<p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.4; margin-top:0.25rem;">${sk.desc}</p>` : ''}
             </div>
           `;
@@ -1429,10 +1353,6 @@
               </div>
               <div id="cvStatusBadge" style="font-size:0.82rem; margin-bottom:0.75rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.5rem; min-height:22px;"></div>
               <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-                <label class="btn btn-sm btn-primary" style="cursor:pointer; margin:0; display:inline-flex; align-items:center; gap:0.35rem;">
-                  <span>📄 اختيار ملف PDF من جهازك</span>
-                  <input type="file" id="cvFileInput" accept="application/pdf,.pdf" style="display:none;" onchange="handleCvUpload(event)">
-                </label>
                 <button type="button" class="btn btn-sm btn-glass" onclick="previewCurrentCv()">👁️ معاينة / فتح الـ CV</button>
                 <button type="button" class="btn btn-sm" style="background:transparent; border:1px solid var(--border-card); color:var(--text-secondary);" onclick="restoreDefaultCv()">استعادة الافتراضي</button>
               </div>
@@ -1964,42 +1884,6 @@
       reader.readAsDataURL(file);
     }
 
-    function handleCvUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
-        alert(adminLang === 'fr' ? 'يرجى اختيار ملف بصيغة PDF فقط.' : 'Please select a PDF file.');
-        return;
-      }
-
-      if (file.size > 8 * 1024 * 1024) {
-        alert(adminLang === 'fr' ? 'حجم الملف كبير جداً (أكثر من 8 ميجابايت). يُفضل استخدام ملف أصغر أو وضع رابط خارجي (Google Drive).' : 'File is too large (>8MB). Please use a smaller PDF or provide a direct link.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const base64Pdf = e.target.result;
-        const input = document.getElementById('dp_cvUrl');
-        if (input) input.value = base64Pdf;
-        if (!data.personal) data.personal = {};
-        data.personal.cvUrl = base64Pdf;
-        data.personal.cvFileName = file.name;
-
-        updateCvStatusPreview();
-
-        localStorage.setItem('portfolio_cache', JSON.stringify(data));
-        try {
-          const bc = new BroadcastChannel('portfolio_sync');
-          bc.postMessage({ type: 'DATA_UPDATED', data: data });
-        } catch (err) { }
-
-        showToast(adminLang === 'fr' ? '✓ تم رفع وتحديث ملف الـ CV بنجاح!' : '✓ CV PDF uploaded and linked successfully!');
-      };
-      reader.readAsDataURL(file);
-    }
-
     function previewCurrentCv() {
       const p = (data && data.personal) ? data.personal : {};
       const url = p.cvUrl || 'resumes/Resume_Yassine_Eljarjini_FR.pdf';
@@ -2179,95 +2063,75 @@
       showToast('✓ تم تطبيق التعديلات بنجاح وبثها فورياً!');
     }
 
-    function openCloudSettingsModal() {
-      const modal = document.getElementById('adminSettingsModal');
-      if (!modal) return;
-
-      const pin = typeof getPortfolioAdminPin === 'function' ? getPortfolioAdminPin() : '1234';
-      document.getElementById('cfg_admin_pin').value = pin;
-
-      let pid = (typeof PORTFOLIO_CONFIG !== 'undefined' && PORTFOLIO_CONFIG.firebase) ? PORTFOLIO_CONFIG.firebase.projectId : '';
-      let akey = (typeof PORTFOLIO_CONFIG !== 'undefined' && PORTFOLIO_CONFIG.firebase) ? PORTFOLIO_CONFIG.firebase.apiKey : '';
-      try {
-        const saved = localStorage.getItem('portfolio_firebase_config');
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (parsed.projectId) pid = parsed.projectId;
-          if (parsed.apiKey) akey = parsed.apiKey;
-        }
-      } catch (e) { }
-
-      document.getElementById('cfg_fb_project_id').value = pid || '';
-      document.getElementById('cfg_fb_api_key').value = akey || '';
-      modal.style.display = 'flex';
-      lucide.createIcons();
-    }
-
-    function closeCloudSettingsModal() {
-      const modal = document.getElementById('adminSettingsModal');
-      if (modal) modal.style.display = 'none';
-    }
-
-    function saveCloudSettings() {
-      const newPin = document.getElementById('cfg_admin_pin').value.trim();
-      const pid = document.getElementById('cfg_fb_project_id').value.trim();
-      const akey = document.getElementById('cfg_fb_api_key').value.trim();
-
-      if (newPin) {
-        localStorage.setItem('portfolio_custom_pin', newPin);
-      }
-
-      if (pid && akey) {
-        localStorage.setItem('portfolio_firebase_config', JSON.stringify({ projectId: pid, apiKey: akey }));
-      } else {
-        localStorage.removeItem('portfolio_firebase_config');
-      }
-
-      closeCloudSettingsModal();
-      showToast('✓ تم حفظ إعدادات الأمان والسحابة بنجاح!');
-    }
-
     async function saveAllToCloud() {
       const btn = document.getElementById('adminSaveCloudBtn');
       btn.disabled = true;
       btn.innerHTML = 'جاري المزامنة...';
 
-      localStorage.setItem('portfolio_cache', JSON.stringify(data));
-      try {
-        const bc = new BroadcastChannel('portfolio_sync');
-        bc.postMessage({ type: 'DATA_UPDATED', data: data });
-      } catch (err) { }
-
       const targetCloudUrl = typeof getPortfolioCloudUrl === 'function' ? getPortfolioCloudUrl() : null;
-      if (!targetCloudUrl) {
-        btn.disabled = false;
-        btn.innerHTML = '<i data-lucide="cloud-upload" style="width: 16px; height: 16px;"></i><span id="lbl_adm_save">حفظ التعديلات سحابياً</span>';
-        lucide.createIcons();
-        showToast('✓ تم الحفظ محلياً! (للتفعيل السحابي اضغط على زر الإعدادات)');
-        openCloudSettingsModal();
-        return;
-      }
-
       try {
+        const user = window.adminAuthUser;
+        if (!user) {
+          showToast('غير مسجل الدخول. أعد تسجيل الدخول قبل الحفظ.');
+          return;
+        }
+        if (!targetCloudUrl) {
+          showToast('تعذر تحديد عنوان مستند Firestore.');
+          return;
+        }
+
+        const payload = JSON.stringify(data);
+        const payloadSize = new TextEncoder().encode(payload).length;
+        if (payloadSize > 900 * 1024) {
+          const dataUrlFields = [];
+          const scan = (value, path = '') => {
+            if (typeof value === 'string' && value.startsWith('data:')) {
+              dataUrlFields.push({ path, size: new TextEncoder().encode(value).length });
+            } else if (value && typeof value === 'object') {
+              Object.entries(value).forEach(([key, child]) => scan(child, path ? `${path}.${key}` : key));
+            }
+          };
+          scan(data);
+          dataUrlFields.sort((a, b) => b.size - a.size);
+          const heaviest = dataUrlFields.slice(0, 5).map(field => `${field.path} (${Math.round(field.size / 1024)} Ko)`).join(', ');
+          showToast(`Sauvegarde annulée : ${(payloadSize / 1024).toFixed(0)} Ko dépassent la limite de 900 Ko.${heaviest ? ` Champs data: les plus lourds : ${heaviest}.` : ''}`);
+          return;
+        }
+
+        localStorage.setItem('portfolio_cache', payload);
+        try {
+          const bc = new BroadcastChannel('portfolio_sync');
+          bc.postMessage({ type: 'DATA_UPDATED', data });
+        } catch (err) {
+          console.warn('BroadcastChannel indisponible :', err);
+        }
+
         const body = {
           fields: {
-            payload: { stringValue: JSON.stringify(data) },
+            payload: { stringValue: payload },
             updatedAt: { stringValue: new Date().toISOString() }
           }
         };
+        const idToken = await user.getIdToken();
         const res = await fetch(targetCloudUrl, {
           method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${idToken}`
+          },
           body: JSON.stringify(body)
         });
 
         if (res.ok) {
           showToast('✓ تم حفظ ومزامنة البيانات مع السحابة بنجاح!');
+        } else if (res.status === 401 || res.status === 403) {
+          showToast(`غير مصرح بالحفظ (HTTP ${res.status}). تحقق من حساب Firebase وقواعد Firestore.`);
         } else {
-          showToast('تم الحفظ محلياً (تحقق من إعدادات السحابة)');
+          showToast(`فشل الحفظ إلى السحابة (HTTP ${res.status}).`);
         }
       } catch (err) {
-        showToast('تم الحفظ محلياً');
+        console.error('Échec de la sauvegarde Firestore :', err);
+        showToast('تعذر حفظ البيانات إلى السحابة بسبب خطأ في الشبكة أو المصادقة.');
       } finally {
         btn.disabled = false;
         btn.innerHTML = '<i data-lucide="cloud-upload" style="width: 16px; height: 16px;"></i><span id="lbl_adm_save">حفظ التعديلات سحابياً</span>';
@@ -2302,7 +2166,6 @@
             } catch (err) { }
             renderLivePreview();
             await saveAllToCloud();
-            showToast('✓ تم استرجاع النسخة وتحديث السحابة بنجاح!');
           }
         } catch (err) {
           alert('تعذر قراءة ملف JSON.');
@@ -2319,12 +2182,105 @@
       setTimeout(() => toast.classList.remove('show'), 3500);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (sessionStorage.getItem('portfolio_admin_auth') === 'true') {
-        document.getElementById('adminAuthModal').style.display = 'none';
-        initAdmin();
+  </script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js';
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      signOut
+    } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
+
+    const firebaseConfig = window.PORTFOLIO_CONFIG?.firebase;
+    const loginForm = document.getElementById('adminLoginForm');
+    const loginButton = document.getElementById('adminLoginButton');
+    const errorElement = document.getElementById('adminAuthError');
+    const authModal = document.getElementById('adminAuthModal');
+
+    function showAuthError(message) {
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+
+    function authErrorMessage(error) {
+      if (error.code === 'auth/too-many-requests') return 'Trop de tentatives. Réessayez plus tard.';
+      if (error.code === 'auth/network-request-failed') return 'Erreur réseau. Vérifiez votre connexion puis réessayez.';
+      if (['auth/invalid-credential', 'auth/invalid-login-credentials', 'auth/user-not-found', 'auth/wrong-password', 'auth/invalid-email'].includes(error.code)) {
+        return 'Adresse e-mail ou mot de passe incorrect.';
       }
-    });
+      return 'Connexion impossible. Vérifiez votre compte et réessayez.';
+    }
+
+    if (!firebaseConfig?.apiKey || !firebaseConfig?.projectId) {
+      showAuthError('La configuration Firebase est incomplète.');
+    } else {
+      const app = initializeApp({
+        apiKey: firebaseConfig.apiKey,
+        projectId: firebaseConfig.projectId,
+        authDomain: `${firebaseConfig.projectId}.firebaseapp.com`
+      });
+      const auth = getAuth(app);
+
+      loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        errorElement.style.display = 'none';
+        loginButton.disabled = true;
+        try {
+          await signInWithEmailAndPassword(
+            auth,
+            document.getElementById('adminEmail').value.trim(),
+            document.getElementById('adminPassword').value
+          );
+        } catch (error) {
+          showAuthError(authErrorMessage(error));
+        } finally {
+          loginButton.disabled = false;
+        }
+      });
+
+      document.getElementById('adminLogoutBtn').addEventListener('click', () => signOut(auth));
+
+      onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+          window.adminAuthUser = null;
+          authModal.style.display = 'flex';
+          return;
+        }
+
+        window.adminAuthUser = user;
+        errorElement.style.display = 'none';
+        const cloudUrl = window.getPortfolioCloudUrl();
+        try {
+          const response = await fetch(cloudUrl);
+          if (response.status === 404) {
+            const cached = localStorage.getItem('portfolio_cache');
+            if (cached) {
+              try {
+                window.data = JSON.parse(cached);
+              } catch (error) {
+                console.warn('Cache local illisible, utilisation des données initiales.', error);
+              }
+            }
+          } else if (!response.ok) {
+            throw new Error(`Firestore HTTP ${response.status}`);
+          } else {
+            const document = await response.json();
+            const payload = document.fields?.payload?.stringValue;
+            if (typeof payload !== 'string') throw new Error('Le champ payload est absent du document Firestore.');
+            window.data = JSON.parse(payload);
+            localStorage.setItem('portfolio_cache', JSON.stringify(window.data));
+          }
+
+          authModal.style.display = 'none';
+          window.initAdmin();
+        } catch (error) {
+          console.error('Chargement Firestore impossible :', error);
+          showAuthError('Connexion réussie, mais les données du portfolio n’ont pas pu être chargées. Vérifiez le réseau et les règles Firestore.');
+          await signOut(auth);
+        }
+      });
+    }
   </script>
 </body>
 
