@@ -5,15 +5,17 @@
     "ignore": [
       "firebase.json",
       "**/.*",
+      ".git/**",
+      ".firebase/**",
       "**/node_modules/**",
       "shared/**",
       "docs/**",
       "AGENTS.md",
       "README.md",
       "LICENSE",
+      "admin.html",
       "**/*.log",
-      "%SystemDrive%/**",
-      "admin.html"
+      "%SystemDrive%/**"
     ],
     "headers": [
       {
