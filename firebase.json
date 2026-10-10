@@ -11,6 +11,8 @@
       "AGENTS.md",
       "README.md",
       "LICENSE",
+      "**/*.log",
+      "%SystemDrive%/**",
       "admin.html"
     ],
     "headers": [
