@@ -1,51 +1,23 @@
 /**
  * ====================================================================
- * PORTFOLIO CONFIGURATION & OPEN-SOURCE SETTINGS
+ * PORTFOLIO FIREBASE WEB CONFIGURATION
  * ====================================================================
  * 
- * Welcome to the Open-Source Portfolio Template!
- * You can configure your admin credentials and optional cloud sync below.
+ * Firebase web configuration is public; Firestore rules enforce write access.
  */
 
 const PORTFOLIO_CONFIG = {
-
-  adminPin: "",
 
   firebase: {
     projectId: "interactiveportfolio-4788f",
     apiKey: "AIzaSyD94vBHqzO8hgkPlsQTjLSJSzKKCnc4VqU"
   }
 };
+window.PORTFOLIO_CONFIG = PORTFOLIO_CONFIG;
 
 function getPortfolioCloudUrl() {
-  // 1. Check if configured in PORTFOLIO_CONFIG
   if (PORTFOLIO_CONFIG.firebase && PORTFOLIO_CONFIG.firebase.projectId && PORTFOLIO_CONFIG.firebase.apiKey) {
     return `https://firestore.googleapis.com/v1/projects/${PORTFOLIO_CONFIG.firebase.projectId}/databases/(default)/documents/portfolio_data/main?key=${PORTFOLIO_CONFIG.firebase.apiKey}`;
   }
-
-  // 2. Check if user configured custom credentials inside Admin UI (localStorage)
-  try {
-    const saved = localStorage.getItem('portfolio_firebase_config');
-    if (saved) {
-      const cfg = JSON.parse(saved);
-      if (cfg.projectId && cfg.apiKey) {
-        return `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents/portfolio_data/main?key=${cfg.apiKey}`;
-      }
-    }
-  } catch (e) {}
-
   return null;
-}
-
-/**
- * Returns the effective admin PIN (from custom local PIN if set, or config)
- */
-function getPortfolioAdminPin() {
-  try {
-    const customPin = localStorage.getItem('portfolio_custom_pin');
-    if (customPin && customPin.trim().length > 0) {
-      return customPin.trim();
-    }
-  } catch (e) {}
-  return PORTFOLIO_CONFIG.adminPin || "1234";
 }

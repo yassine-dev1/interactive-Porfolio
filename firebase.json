@@ -13,7 +13,6 @@
       "AGENTS.md",
       "README.md",
       "LICENSE",
-      "admin.html",
       "**/*.log",
       "%SystemDrive%/**"
     ],
@@ -29,7 +28,17 @@
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
           { "key": "X-Frame-Options", "value": "DENY" }
         ]
+      },
+      {
+        "source": "/admin.html",
+        "headers": [
+          { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+          { "key": "Cache-Control", "value": "no-store" }
+        ]
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   }
 }
