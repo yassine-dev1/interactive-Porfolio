@@ -3,7 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /portfolio_data/{doc} {
       allow read: if true;
-      allow write: if request.auth != null && request.auth.uid == "REPLACE_WITH_ADMIN_UID";
+      allow write: if request.auth != null && request.auth.uid == "Uh7K35ih0GZmijz1O9HlWrpAgvH3";
     }
 
     match /{document=**} {
