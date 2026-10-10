@@ -1,5 +1,30 @@
 /* Reusable controls, cards, forms and content components. */
 
+.noscript-panel {
+  max-width: 48rem;
+  margin: 2rem auto;
+  padding: 1.25rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.noscript-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.noscript-panel p,
+.noscript-panel ul {
+  margin: 0.5rem 0;
+}
+
+.noscript-panel a {
+  color: var(--accent-cyan);
+  text-underline-offset: 0.2em;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
