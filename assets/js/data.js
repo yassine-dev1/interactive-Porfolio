@@ -55,7 +55,7 @@ const INITIAL_DATA = {
     },
     {
       id: "s2",
-      number: "4",
+      number: "3",
       label: "Featured projects",
       labelFr: "Projets phares",
     },
@@ -198,9 +198,9 @@ const INITIAL_DATA = {
         {
           name: "Spring Boot",
         },
-        // {
-        //   name: ".NET",
-        // },
+        {
+          name: ".NET",
+        },
         {
           name: "Tailwind CSS",
         },
@@ -261,7 +261,7 @@ const INITIAL_DATA = {
           name: "Redis",
         },
         {
-          name: "Hibernete",
+          name: "Hibernate",
         },
         {
           name: "Prisma ORM",
