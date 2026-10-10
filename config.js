@@ -8,13 +8,9 @@
  */
 
 const PORTFOLIO_CONFIG = {
-  // Secret PIN to access the admin studio (admin.html)
-  // Default is "1234". Change this to your preferred PIN.
-  adminPin: "yassineGit",
 
-  // Cloud Synchronization Settings (Firebase Firestore REST API)
-  // Leave empty ("") for 100% Zero-Cloud / Offline mode (uses localStorage & JSON backup).
-  // Or enter your own Firebase project credentials to enable cloud sync:
+  adminPin: "",
+
   firebase: {
     projectId: "interactiveportfolio-4788f",
     apiKey: "AIzaSyD94vBHqzO8hgkPlsQTjLSJSzKKCnc4VqU"
