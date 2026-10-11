@@ -294,35 +294,6 @@ function closeMobileMenu() {
   document.getElementById("mobileDrawer").classList.remove("open");
 }
 
-async function fetchLatestFromCloud() {
-  if (!ENABLE_REMOTE_DATA || !CLOUD_URL) return;
-  try {
-    const res = await fetch(CLOUD_URL, { cache: "no-store" });
-    if (res.ok) {
-      const json = await res.json();
-      if (
-        json &&
-        json.fields &&
-        json.fields.payload &&
-        json.fields.payload.stringValue
-      ) {
-        const parsed = JSON.parse(json.fields.payload.stringValue);
-        if (parsed && parsed.personal) {
-          data = parsed;
-          localStorage.setItem(
-            "portfolio_cache",
-            JSON.stringify({ version: DATA_VERSION, data }),
-          );
-          renderAll();
-          initializeMotion();
-        }
-      }
-    }
-  } catch (err) {
-    // Cloud synchronization is optional; keep the local portfolio data active.
-  }
-}
-
 function handleContactSubmit(e) {
   e.preventDefault();
   const f = [...e.target.querySelectorAll("input,textarea")].map(
