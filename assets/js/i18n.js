@@ -173,15 +173,21 @@ const I18N = {
   },
 };
 
-function init() {
+async function init() {
+  try {
+    await portfolioDataReady;
+  } catch (error) {
+    console.error("Portfolio initialization stopped because data is unavailable.", error);
+    return;
+  }
   applyLanguage(currentLang);
   renderAll();
   initializeMotion();
   initializeSectionNavigation();
-  fetchLatestFromCloud();
 }
 
-function toggleLanguage() {
+async function toggleLanguage() {
+  await portfolioDataReady;
   startLanguageTransition();
   currentLang = currentLang === "en" ? "fr" : "en";
   localStorage.setItem("portfolio_lang", currentLang);
